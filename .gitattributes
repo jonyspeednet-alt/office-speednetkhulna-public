@@ -1,0 +1,11 @@
+# Force LF for shell scripts — CRLF breaks them on the Linux server (bash\r error)
+*.sh text eol=lf
+*.php text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+# Workflows run on ubuntu runners and hooks run through sh: keep them LF too.
+*.yml text eol=lf
+*.yaml text eol=lf
+.github/hooks/* text eol=lf

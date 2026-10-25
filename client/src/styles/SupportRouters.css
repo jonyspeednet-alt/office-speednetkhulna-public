@@ -1,0 +1,51 @@
+/* Icon-only ghost action buttons (Support Routers table) */
+.router-icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--text-muted, #6c757d);
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.router-icon-btn:hover:not(:disabled) {
+  background: var(--surface-muted, #f1f5f9);
+  transform: translateY(-1px);
+}
+.router-icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.router-icon-btn:focus-visible {
+  outline: 2px solid var(--brand, #2563eb);
+  outline-offset: 2px;
+}
+.router-icon-btn.test:hover:not(:disabled) { color: #0dcaf0; }
+.router-icon-btn.sync:hover:not(:disabled) { color: #198754; }
+.router-icon-btn.edit:hover:not(:disabled) { color: #d97706; }
+.router-icon-btn.del:hover:not(:disabled) { color: #dc3545; }
+
+/* Mobile View Responsiveness Enhancements */
+@media (max-width: 575.98px) {
+  .router-icon-btn {
+    padding: 8px 10px;
+    font-size: 15px;
+    min-width: 34px;
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ui-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+  }
+
+  .ui-table {
+    min-width: 680px;
+  }
+}

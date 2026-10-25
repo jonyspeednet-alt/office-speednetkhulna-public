@@ -1,0 +1,280 @@
+:root {
+    --emp-primary: var(--brand);
+    --emp-secondary: #60a5fa;
+    --emp-bg: #f4f7fe;
+    --emp-text-dark: #1b2559;
+    --emp-text-muted: #a3aed0;
+    --emp-card-bg: rgba(255, 255, 255, 0.9);
+    --emp-border: #e0e5f2;
+    --emp-shadow: 0 10px 30px rgba(112, 144, 176, 0.1);
+}
+
+.edit-employee-page {
+    background-color: var(--emp-bg);
+    min-height: 100vh;
+    padding: 30px;
+    font-family: var(--font-ui);
+}
+
+/* Premium Glass Card */
+.glass-card-modern {
+    background: var(--emp-card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid var(--emp-border);
+    box-shadow: var(--emp-shadow);
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    background: linear-gradient(135deg, var(--brand) 0%, #60a5fa 100%);
+    border-radius: 30px;
+    color: white;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.profile-pic-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+.profile-pic-modern {
+    width: 140px;
+    height: 140px;
+    border-radius: 40px;
+    object-fit: cover;
+    border: 6px solid rgba(255, 255, 255, 0.2);
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.upload-overlay {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    background: white;
+    color: var(--emp-primary);
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.upload-overlay:hover {
+    transform: scale(1.1);
+    background: var(--emp-primary);
+    color: white;
+}
+
+/* Tabs */
+.nav-pills-premium {
+    background: white;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-link-premium {
+    border: none;
+    background: transparent;
+    padding: 14px 20px;
+    border-radius: 15px;
+    text-align: left;
+    color: var(--emp-text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-link-premium i {
+    font-size: 1.1rem;
+}
+
+.nav-link-premium:hover {
+    background: rgba(37, 99, 235, 0.05);
+    color: var(--emp-primary);
+}
+
+.nav-link-premium.active {
+    background: var(--emp-primary);
+    color: white;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+/* Form Styling */
+.form-label-premium {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--emp-text-dark);
+    margin-bottom: 10px;
+    display: block;
+    margin-left: 5px;
+}
+
+.input-group-premium {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-icon-premium {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--emp-text-muted);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.form-control-premium {
+    width: 100%;
+    padding: 14px 16px 14px 50px;
+    border-radius: 16px;
+    border: 1px solid var(--emp-border);
+    background: white;
+    color: var(--emp-text-dark);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-control-premium:focus {
+    outline: none;
+    border-color: var(--emp-primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.form-control-premium:focus + .input-icon-premium {
+    color: var(--emp-primary);
+}
+
+.form-control-premium:disabled {
+    background: #f8fafc;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+/* Buttons */
+.btn-save-premium {
+    background: var(--emp-primary);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 18px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-save-premium:hover:not(:disabled) {
+    background: #3311db;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.3);
+}
+
+.btn-save-premium:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-cancel-premium {
+    background: transparent;
+    color: var(--emp-text-dark);
+    border: 1px solid var(--emp-border);
+    padding: 16px 32px;
+    border-radius: 18px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-cancel-premium:hover:not(:disabled) {
+    background: #f1f5f9;
+    transform: translateY(-2px);
+}
+
+.btn-cancel-premium:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.btn-back-premium {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.btn-back-premium:hover {
+    background: white;
+    color: var(--emp-primary);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@media (max-width: 991px) {
+    .hero-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    .profile-pic-container {
+        margin-bottom: 20px;
+    }
+}

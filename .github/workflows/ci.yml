@@ -1,0 +1,95 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: '22'
+  PUPPETEER_SKIP_DOWNLOAD: 'true'
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  security:
+    name: Scan tracked secrets
+    uses: ./.github/workflows/secrets-scan.yml
+
+  build:
+    name: Build & Validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: |
+            server/package-lock.json
+            client/package-lock.json
+            client-partner/package-lock.json
+
+      - name: Install server dependencies and validate JavaScript syntax
+        working-directory: server
+        run: |
+          npm ci
+          find . -path './node_modules' -prune -o -type f \( -name '*.js' -o -name '*.cjs' \) -print0 | xargs -0 -n1 node --check
+
+      - name: Install WhatsApp worker test dependencies
+        working-directory: whatsapp-worker
+        run: npm ci
+
+      - name: Test server security and regression cases
+        working-directory: server
+        run: npm test
+
+      - name: Audit server dependencies (fail on high+)
+        working-directory: server
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Install client dependencies
+        working-directory: client
+        run: npm ci
+
+      - name: Audit client dependencies (fail on high+)
+        working-directory: client
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Lint client sources
+        working-directory: client
+        run: npm run lint
+
+      - name: Build client
+        working-directory: client
+        run: npm run build
+        env:
+          VITE_RELEASE_SHA: ${{ github.sha }}
+
+      - name: Install partner client dependencies
+        working-directory: client-partner
+        run: npm ci
+
+      - name: Audit partner client dependencies
+        working-directory: client-partner
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Build partner client
+        working-directory: client-partner
+        run: npm run build
+        env:
+          VITE_RELEASE_SHA: ${{ github.sha }}

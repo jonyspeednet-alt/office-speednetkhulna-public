@@ -1,0 +1,177 @@
+/* Reseller / Channel Partner list — corporate table view.
+   Extracted from an inline <style> block; values mapped to design tokens. */
+
+.corporate-page {
+  background-color: var(--bg);
+  min-height: calc(100vh - 60px);
+  font-family: var(--font-ui);
+}
+.corporate-table {
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+.corporate-table tbody tr {
+  transition: all var(--t-base) var(--ease);
+  background-color: var(--surface);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--r-sm);
+}
+.corporate-table tbody tr td:first-child {
+  border-top-left-radius: var(--r-sm);
+  border-bottom-left-radius: var(--r-sm);
+}
+.corporate-table tbody tr td:last-child {
+  border-top-right-radius: var(--r-sm);
+  border-bottom-right-radius: var(--r-sm);
+}
+.corporate-table tbody tr:hover {
+  box-shadow: 0 12px 20px -8px var(--brand-glow), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+.corporate-table th {
+  background-color: transparent;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  border: none;
+}
+.corporate-table td {
+  padding: 0.75rem 0.5rem;
+  border: none;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text);
+  vertical-align: middle;
+}
+.corporate-table tbody tr td:first-child { border-left: 1px solid var(--border-soft); }
+.corporate-table tbody tr td:last-child { border-right: 1px solid var(--border-soft); }
+
+.corporate-table tbody tr:hover td {
+  border-color: var(--border);
+}
+.corporate-badge {
+  background-color: var(--surface-muted);
+  color: var(--text);
+  font-weight: 600;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.corporate-badge span {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  font-weight: 500;
+}
+.corporate-table tr:hover .corporate-badge {
+  background-color: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.avatar-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--brand-soft) 0%, var(--brand-softer) 100%);
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  box-shadow: 0 2px 5px var(--brand-glow) inset;
+  flex-shrink: 0;
+  border: 1px solid var(--brand-softer);
+}
+.corporate-link {
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background-color: var(--brand-soft);
+  border: 1px solid var(--brand-softer);
+  transition: all 0.2s ease;
+  font-size: 0.75rem;
+}
+.corporate-link:hover {
+  background-color: var(--brand-softer);
+  color: var(--brand-strong);
+  transform: translateY(-1px);
+}
+.status-badge {
+  padding: 0.4rem 1rem;
+  border-radius: var(--r-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.status-active {
+  background-color: var(--success-soft);
+  color: var(--success);
+  border: 1px solid var(--success-border);
+}
+.status-inactive {
+  background-color: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid var(--danger-border);
+}
+.status-active .status-dot { background-color: var(--success); }
+.status-inactive .status-dot { background-color: var(--danger); }
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 4px var(--brand-glow) !important;
+}
+.tab-btn {
+  transition: all var(--t-base) ease;
+  letter-spacing: 0.3px;
+  border-radius: var(--r-sm) !important;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+}
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--brand-strong) 0%, var(--brand) 100%);
+  color: white !important;
+  box-shadow: 0 4px 12px var(--brand-glow);
+}
+.tab-btn:not(.active) {
+  color: var(--text-muted);
+}
+.tab-btn:not(.active):hover {
+  background-color: var(--surface-muted);
+  color: var(--text);
+}
+.header-icon-container {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 16px var(--brand-glow);
+}

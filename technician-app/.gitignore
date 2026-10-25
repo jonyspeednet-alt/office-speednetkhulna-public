@@ -1,0 +1,8 @@
+node_modules/
+.expo/
+dist/
+android/
+*.apk
+*.log
+google-services.json
+GoogleService-Info.plist

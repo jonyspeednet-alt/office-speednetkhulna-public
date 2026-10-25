@@ -1,0 +1,4 @@
+# Security: never serve server logs or editor backups.
+<FilesMatch "^(error_log|\.htaccess.*|.*\.bak)$">
+  Require all denied
+</FilesMatch>

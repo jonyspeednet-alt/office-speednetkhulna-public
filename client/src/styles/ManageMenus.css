@@ -1,0 +1,237 @@
+.manage-menus-page {
+    padding: 24px;
+    background: #f0f4f8;
+    min-height: calc(100vh - 40px);
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header-title h3 {
+    font-weight: 800;
+    color: #2b3674;
+    margin: 0;
+    font-size: 1.75rem;
+}
+
+.header-title p {
+    color: #a3aed0;
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+}
+
+.menu-list-container {
+    background: #fff;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e5f2;
+}
+
+.sortable-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    margin-bottom: 8px;
+}
+
+.menu-card {
+    background: #fff;
+    border: 1px solid #e0e5f2;
+    border-radius: 12px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-color: var(--brand);
+    transform: translateY(-2px);
+}
+
+.menu-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.drag-handle {
+    color: #a3aed0;
+    cursor: grab;
+    padding: 4px;
+    transition: 0.2s;
+}
+
+.drag-handle:hover {
+    color: var(--brand);
+}
+
+.menu-icon-box {
+    width: 36px;
+    height: 36px;
+    background: #f4f7fe;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand);
+    font-size: 1.1rem;
+}
+
+.menu-details strong {
+    color: #2b3674;
+    font-size: 0.95rem;
+    display: block;
+}
+
+.menu-details small {
+    color: #a3aed0;
+    font-size: 0.8rem;
+}
+
+.menu-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-category {
+    background: rgba(37, 99, 235, 0.05);
+    color: var(--brand);
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: capitalize;
+}
+
+.search-box .input-group {
+    background: #fff;
+    border: 1px solid #e0e5f2;
+}
+
+.search-box .form-control:focus {
+    box-shadow: none;
+}
+
+.visibility-indicator {
+    font-size: 0.8rem;
+}
+
+.visibility-indicator.hidden {
+    color: #ff5b5b;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: #f4f7fe;
+    transition: 0.2s;
+}
+
+.action-btn.edit { color: var(--brand); }
+.action-btn.delete { color: #ff5b5b; }
+
+.action-btn:hover {
+    background: #e0e5f2;
+    transform: scale(1.1);
+}
+
+.nested-list {
+    padding-left: 48px;
+    border-left: 2px dashed #e0e5f2;
+    margin-top: 4px;
+    min-height: 10px;
+}
+
+/* Sortable Ghost */
+.sortable-ghost {
+    opacity: 0.4;
+    background: var(--brand) !important;
+    border: 1px dashed var(--brand);
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+    padding: 24px 24px 12px;
+    border: none;
+}
+
+.modal-title {
+    color: #2b3674;
+    font-weight: 800;
+}
+
+.modal-body {
+    padding: 12px 24px 24px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2b3674;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.form-control, .form-select {
+    border-radius: 12px;
+    border: 1px solid #e0e5f2;
+    padding: 10px 14px;
+    color: #2b3674;
+    font-size: 0.9rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.btn-primary {
+    background: var(--brand);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    background: #3311cc;
+    transform: translateY(-2px);
+}
+
+.btn-light {
+    background: #f4f7fe;
+    color: #2b3674;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+}

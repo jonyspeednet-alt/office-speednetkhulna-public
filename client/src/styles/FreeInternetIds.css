@@ -1,0 +1,159 @@
+.free-ids-page {
+  min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 100%);
+}
+
+.free-ids-header {
+  max-width: 1160px;
+  margin: 0 auto 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.free-ids-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.branch-filter-select {
+  min-width: 240px;
+}
+
+.free-ids-header h2 {
+  margin: 0;
+  color: #1d3f7a;
+  font-weight: 800;
+}
+
+.free-ids-header p {
+  margin: 4px 0 0;
+  color: #4c5f7a;
+}
+
+.branch-grid {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.create-free-id-card {
+  max-width: 1160px;
+  margin: 0 auto 16px;
+  background: #fff;
+  border: 1px solid #c9daf6;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(36, 65, 112, 0.08);
+  padding: 12px;
+}
+
+.create-free-id-card h4 {
+  margin: 0 0 10px;
+  color: #1d3f7a;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.create-free-id-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.create-free-id-form textarea,
+.create-free-id-form button {
+  grid-column: span 2;
+}
+
+.bulk-upload-box {
+  margin-top: 10px;
+  border-top: 1px dashed #d7e3fb;
+  padding-top: 10px;
+}
+
+.bulk-upload-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.branch-card {
+  border: 1px solid #c9daf6;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(36, 65, 112, 0.08);
+  overflow: hidden;
+}
+
+.branch-card header {
+  background: #f3f7ff;
+  border-bottom: 1px solid #dce7fb;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.branch-card header h3 {
+  margin: 0;
+  color: #1d3f7a;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.branch-card header span {
+  font-size: 0.8rem;
+  color: #0d9f61;
+  font-weight: 700;
+}
+
+.table-wrap {
+  padding: 8px;
+}
+
+.table-wrap td,
+.table-wrap th {
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .branch-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .create-free-id-form {
+    grid-template-columns: 1fr;
+  }
+
+  .create-free-id-form textarea,
+  .create-free-id-form button {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .free-ids-page {
+    padding: 12px;
+  }
+
+  .free-ids-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .free-ids-header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .branch-filter-select {
+    min-width: 0;
+  }
+}

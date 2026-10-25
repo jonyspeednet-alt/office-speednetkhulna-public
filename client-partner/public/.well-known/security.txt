@@ -1,0 +1,8 @@
+Contact: mailto:security@speednetkhulna.com
+Contact: https://speednetkhulna.com/contact
+Expires: 2027-09-03T00:00:00.000Z
+Acknowledgments: https://speednetkhulna.com
+Preferred-Languages: en, bn
+Canonical: https://office.speednetkhulna.com/.well-known/security.txt
+Policy: https://office.speednetkhulna.com/.well-known/security.txt
+# Speed Net Khulna - Responsible disclosure: please report vulnerabilities to security@speednetkhulna.com

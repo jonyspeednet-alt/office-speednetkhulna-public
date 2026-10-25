@@ -1,0 +1,4 @@
+# Speed Net Khulna Office Portal
+# Block all crawlers — this is an internal management system
+User-agent: *
+Disallow: /

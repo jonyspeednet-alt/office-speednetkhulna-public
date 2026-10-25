@@ -1,0 +1,241 @@
+.internet-registration-page {
+  min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(180deg, #e7edf8 0%, #f7faff 100%);
+}
+
+.paper-form {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: #fff;
+  border: 3px solid #1d4f9f;
+  box-shadow: 0 14px 36px rgba(21, 49, 96, 0.14);
+}
+
+.free-id-topbar {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #c8d7ef;
+  background: #f4f8ff;
+}
+
+.form-banner {
+  display: grid;
+  grid-template-columns: 1.65fr 0.75fr;
+  border-bottom: 3px solid #1d4f9f;
+}
+
+.brand-block,
+.title-block {
+  padding: 14px 18px;
+}
+
+.brand-block {
+  border-right: 1px solid #bdd0f0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 176px;
+  overflow: hidden;
+  padding: 12px 10px 8px 14px;
+  flex-direction: column;
+  text-align: left;
+}
+
+.speednet-logo {
+  display: block;
+  width: min(100%, 220px);
+  max-width: 100%;
+  max-height: 88px;
+  height: auto;
+  object-fit: contain;
+  object-position: left top;
+  background: transparent;
+  padding: 0;
+  box-sizing: border-box;
+  filter: none;
+}
+
+.title-block {
+  background: #f6f9ff;
+}
+
+.title-block h2 {
+  margin: 0;
+  color: #d1811c;
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.title-block p {
+  margin: 6px 0 0;
+  color: #5b6d8c;
+  font-size: 0.86rem;
+}
+
+.paper-alert {
+  margin: 10px 14px 0;
+}
+
+.section-title {
+  margin: 0;
+  padding: 7px 12px;
+  background: #1d5bb4;
+  color: #fff;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.row-grid {
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  border-bottom: 1px solid #c8d7ef;
+}
+
+.top-meta {
+  grid-template-columns: 1.4fr 1fr 1fr;
+}
+
+.three-col {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.row-grid label {
+  margin: 0;
+  color: #30445f;
+  font-size: 0.86rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.span-3 {
+  grid-column: span 3;
+}
+
+.row-grid .form-control,
+.row-grid .form-select {
+  border-radius: 0;
+  min-height: 36px;
+  border: 1px solid #95b2dd;
+  font-size: 0.93rem;
+  box-shadow: none;
+}
+
+.row-grid .form-control:focus,
+.row-grid .form-select:focus {
+  border-color: #1d5bb4;
+  box-shadow: 0 0 0 0.16rem rgba(29, 91, 180, 0.18);
+}
+
+.check-group {
+  border: 1px solid #95b2dd;
+  padding: 8px 10px 10px;
+  margin: 0;
+  min-height: 120px;
+}
+
+.check-group legend {
+  width: auto;
+  margin: 0;
+  padding: 0 4px;
+  font-size: 0.84rem;
+  color: #1a4687;
+  font-weight: 700;
+}
+
+.check-group label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 5px;
+  font-size: 0.88rem;
+  color: #213247;
+  font-weight: 600;
+}
+
+.check-group input[type='radio'],
+.check-group input[type='checkbox'] {
+  margin: 0;
+}
+
+.signature-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 20px 12px 10px;
+}
+
+.signature-row div {
+  border-top: 1px solid #1d5bb4;
+  padding-top: 8px;
+  text-align: center;
+  color: #2d3d55;
+  font-size: 0.83rem;
+  font-weight: 600;
+}
+
+.submit-row {
+  padding: 0 12px 16px;
+}
+
+.submit-row .btn {
+  border-radius: 0;
+  padding: 9px 20px;
+  font-weight: 700;
+}
+
+@media (max-width: 992px) {
+  .form-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-block {
+    border-right: 0;
+    border-bottom: 1px solid #bdd0f0;
+  }
+
+  .top-meta,
+  .three-col {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .span-3 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .internet-registration-page {
+    padding: 10px;
+  }
+
+  .paper-form {
+    border-width: 2px;
+  }
+
+  .top-meta,
+  .three-col,
+  .signature-row {
+    grid-template-columns: 1fr;
+  }
+
+  .span-2,
+  .span-3 {
+    grid-column: span 1;
+  }
+
+  .title-block h2 {
+    font-size: 1.5rem;
+  }
+}

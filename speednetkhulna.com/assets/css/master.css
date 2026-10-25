@@ -1,0 +1,17 @@
+@import 'https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Lato:100,100i,300,300i,400,400i,700,700i,900,900i|PT+Serif:400,400i,700,700i';@import '../fonts/font-awesome-4.6.3/css/font-awesome.min.css';@import '../fonts/stroke/style.css';@import '../fonts/elegant/style.css';@import '../fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css';@import '../fonts/flaticon/font/flaticon.css';@import '../libs/bootstrap/bootstrap.css';@import '../plugins/headers/header.css';@import '../plugins/headers/yamm.css';@import '../plugins/slider-pro/slider-pro.css';@import '../plugins/owl-carousel/owl.theme.css';@import '../plugins/magnific-popup/magnific-popup.css';@import '../plugins/animate/animate.css';@import '../plugins/TiltHoverEffects/css/component.css';@import 'theme.css';@import 'color.css';@import 'responsive.css';
+
+/* ---- Package Features ---- */
+.package-features {
+ margin-top: 8px;
+}
+.package-features h6 {
+ font-size: 11px;
+ font-weight: 600;
+ color: #fff;
+ background: #9d2222;
+ display: inline-block;
+ padding: 4px 10px;
+ margin: 3px 2px;
+ border-radius: 4px;
+ letter-spacing: .02em;
+}

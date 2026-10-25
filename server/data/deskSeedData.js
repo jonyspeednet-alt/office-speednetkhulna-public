@@ -1,0 +1,36 @@
+// NOTE: seed uses generic labels/emails on purpose - do NOT commit real staff names or emails here (public repo).
+const DESK_SEED_ROWS = [
+  { officeCode: 'HQ', deskNo: '1', deskLabel: 'HQ Desk 1', officialEmail: 'hq-desk-1@example.com', assignedUserId: 58 },
+  { officeCode: 'HQ', deskNo: '2', deskLabel: 'HQ Desk 2', officialEmail: 'hq-desk-2@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '3', deskLabel: 'HQ Desk 3', officialEmail: 'hq-desk-3@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '6', deskLabel: 'HQ Desk 6', officialEmail: 'hq-desk-6@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '4', deskLabel: 'HQ Desk 4', officialEmail: 'hq-desk-4@example.com', assignedUserId: 46 },
+  { officeCode: 'HQ', deskNo: '5', deskLabel: 'HQ Desk 5', officialEmail: 'hq-desk-5@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '8', deskLabel: 'HQ Desk 8', officialEmail: 'hq-desk-8@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '10', deskLabel: 'HQ Desk 10', officialEmail: 'hq-desk-10@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '11', deskLabel: 'HQ Desk 11', officialEmail: 'hq-desk-11@example.com', assignedUserId: 51 },
+  { officeCode: 'HQ', deskNo: '12', deskLabel: 'HQ Desk 12', officialEmail: 'hq-desk-12@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '13', deskLabel: 'HQ Desk 13', officialEmail: 'hq-desk-13@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '13N', deskLabel: 'Night Duty', officialEmail: 'night-duty-13n@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '14', deskLabel: 'HQ Desk 14', officialEmail: 'hq-desk-14@example.com', assignedUserId: 54 },
+  { officeCode: 'HQ', deskNo: '14N', deskLabel: 'Night Duty', officialEmail: 'night-duty-14n@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '15', deskLabel: 'HQ Desk 15', officialEmail: 'hq-desk-15@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '15N', deskLabel: 'Night Duty', officialEmail: 'night-duty-15n@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '16', deskLabel: 'HQ Desk 16', officialEmail: 'hq-desk-16@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '17', deskLabel: 'HQ Desk 17', officialEmail: 'hq-desk-17@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '18', deskLabel: 'HQ Desk 18', officialEmail: 'hq-desk-18@example.com', assignedUserId: 37 },
+  { officeCode: 'HQ', deskNo: '19', deskLabel: 'HQ Desk 19', officialEmail: 'hq-desk-19@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '20', deskLabel: 'HQ Desk 20', officialEmail: 'hq-desk-20@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '21', deskLabel: 'HQ Desk 21', officialEmail: 'hq-desk-21@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '22', deskLabel: 'HQ Desk 22', officialEmail: 'hq-desk-22@example.com', assignedUserId: 45 },
+  { officeCode: 'HQ', deskNo: '23', deskLabel: 'HQ Desk 23', officialEmail: 'hq-desk-23@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '24', deskLabel: 'HQ Desk 24', officialEmail: 'hq-desk-24@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '25', deskLabel: 'HQ Desk 25', officialEmail: 'hq-desk-25@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '30', deskLabel: 'HQ Desk 30', officialEmail: 'hq-desk-30@example.com', assignedUserId: null },
+  { officeCode: 'BR-1', deskNo: '26', deskLabel: 'BR-1 Desk 26', officialEmail: 'br-1-desk-26@example.com', assignedUserId: null },
+  { officeCode: 'BR-2', deskNo: '27', deskLabel: 'BR-2 Desk 27', officialEmail: 'br-2-desk-27@example.com', assignedUserId: 43 },
+  { officeCode: 'BR-3', deskNo: '28', deskLabel: 'BR-3 Desk 28', officialEmail: 'br-3-desk-28@example.com', assignedUserId: null },
+  { officeCode: 'HQ', deskNo: '29', deskLabel: 'HQ Desk 29', officialEmail: 'hq-desk-29@example.com', assignedUserId: null }
+];
+
+module.exports = { DESK_SEED_ROWS };

@@ -1,0 +1,59 @@
+{
+  "name": "office-management-client",
+  "version": "1.0.0",
+  "description": "PERN Stack React Frontend - Office Management System",
+  "private": true,
+  "type": "module",
+  "main": "index.jsx",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "lint": "cross-env ESLINT_USE_FLAT_CONFIG=false eslint src --ext js,jsx"
+  },
+  "dependencies": {
+    "@fullcalendar/daygrid": "^6.1.22",
+    "@fullcalendar/interaction": "^6.1.22",
+    "@fullcalendar/react": "^6.1.10",
+    "@fullcalendar/timegrid": "^6.1.22",
+    "@tanstack/react-query": "^5.104.3",
+    "axios": "^1.6.2",
+    "bootstrap": "^5.3.2",
+    "chart.js": "^4.5.1",
+    "html2canvas": "^1.4.1",
+    "moment": "^2.31.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.6.1",
+    "react-qr-code": "^2.2.0",
+    "react-router-dom": "^6.18.0",
+    "sortablejs": "^1.15.6",
+    "sweetalert2": "^11.26.25",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "terser": "^5.51.2",
+    "vite": "^5.4.21"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "allowScripts": {
+    "esbuild@0.21.5": true
+  }
+}

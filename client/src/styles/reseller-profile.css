@@ -1,0 +1,459 @@
+/* Reseller / Channel Partner profile — responsive UI */
+.reseller-page {
+  --rp-primary: var(--brand);
+  --rp-primary-soft: var(--brand-soft);
+  --rp-surface: var(--surface);
+  --rp-muted: var(--text-muted);
+  --rp-radius: var(--r-lg);
+  --rp-radius-sm: var(--r-sm);
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(0.5rem, 2vw, 1rem);
+}
+
+.reseller-page .rp-stat-card {
+  border: 0;
+  border-radius: var(--rp-radius);
+  box-shadow: 0 8px 24px rgba(27, 39, 94, 0.07);
+  height: 100%;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.reseller-page .rp-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(27, 39, 94, 0.1);
+}
+
+.reseller-page .rp-stat-card .rp-stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rp-muted);
+}
+
+.reseller-page .rp-stat-icon {
+  font-size: 1.25rem;
+  color: var(--rp-primary, #4318ff);
+  opacity: 0.85;
+  margin-bottom: 0.35rem;
+}
+
+.reseller-page .rp-stat-card .rp-stat-value {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.reseller-page .rp-gradient-stat {
+  border: 0;
+  border-radius: var(--rp-radius);
+  min-height: 100px;
+}
+
+.reseller-page .rp-profile-header {
+  gap: 0.75rem;
+}
+
+.reseller-page .rp-profile-header .rp-title-block h4 {
+  font-size: clamp(1.05rem, 4vw, 1.35rem);
+  word-break: break-word;
+}
+
+.reseller-page .rp-profile-header .rp-actions {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .reseller-page .rp-profile-header .rp-actions {
+    width: auto;
+  }
+}
+
+.reseller-page .rp-profile-header .rp-actions .btn {
+  flex: 1 1 auto;
+  white-space: nowrap;
+}
+
+@media (min-width: 576px) {
+  .reseller-page .rp-profile-header .rp-actions .btn {
+    flex: 0 0 auto;
+  }
+}
+
+.reseller-page .rp-month-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--rp-radius-sm);
+}
+
+.reseller-page .rp-month-picker input[type="month"] {
+  border: 0;
+  background: transparent;
+  font-weight: 600;
+  font-size: 0.875rem;
+  min-width: 0;
+  width: min(140px, 100%);
+  padding: 0.15rem 0;
+}
+
+.reseller-page .rp-tabs-card .card-header {
+  padding: 0.75rem 0.75rem 0;
+}
+
+.reseller-page .rp-tabs-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.35rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0;
+  max-width: 100%;
+}
+
+.reseller-page .rp-tabs-scroll .nav-item {
+  flex: 0 0 auto;
+}
+
+.reseller-page .rp-tabs-scroll .nav-link {
+  white-space: nowrap;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  padding: 0.4rem 0.85rem;
+}
+
+.reseller-page .rp-tabs-scroll .nav-link.active {
+  background: var(--rp-primary);
+  color: #fff;
+}
+
+.reseller-page .rp-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .reseller-page .rp-toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.reseller-page .rp-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.reseller-page .rp-toolbar-actions .btn {
+  flex: 1 1 calc(50% - 0.25rem);
+  min-width: 0;
+}
+
+@media (min-width: 576px) {
+  .reseller-page .rp-toolbar-actions .btn {
+    flex: 0 0 auto;
+  }
+}
+
+.reseller-page .rp-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: min(420px, 55vh);
+}
+
+.reseller-page .rp-table-wrap table {
+  min-width: 640px;
+}
+
+.reseller-page .rp-table-wrap.rp-table-wide table {
+  min-width: 1060px;
+}
+
+.reseller-page .rp-mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.reseller-page .rp-mobile-card {
+  background: var(--rp-surface);
+  border: 1px solid #e8edf5;
+  border-radius: var(--rp-radius-sm);
+  padding: 0.85rem 1rem;
+  box-shadow: 0 4px 12px rgba(27, 39, 94, 0.04);
+}
+
+.reseller-page .rp-mobile-card .rp-mobile-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.reseller-page .rp-mobile-card .rp-kv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.reseller-page .rp-mobile-card .rp-kv .label {
+  color: var(--rp-muted);
+  font-size: 0.75rem;
+}
+
+.reseller-page .rp-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem 0;
+}
+
+@media (min-width: 576px) {
+  .reseller-page .rp-details-grid.rp-details-2col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.reseller-page .rp-details-grid .rp-detail-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.875rem;
+}
+
+.reseller-page .rp-details-grid .rp-detail-row:last-child {
+  border-bottom: 0;
+}
+
+/* Collapsible sections */
+.reseller-page .rp-collapsible .rp-collapsible-header {
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+  transition: opacity 0.15s ease;
+}
+
+.reseller-page .rp-collapsible .rp-collapsible-header:hover {
+  opacity: 0.8;
+}
+
+.reseller-page .rp-collapsible .rp-collapse-icon {
+  font-size: 0.6rem;
+  transition: transform 0.25s ease;
+  color: var(--rp-muted);
+}
+
+.reseller-page .rp-collapsible .rp-collapse-icon.rp-collapse-open {
+  transform: rotate(180deg);
+}
+
+.reseller-page .rp-collapsible .rp-collapsible-body {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.25s ease, margin 0.25s ease;
+  margin-top: 0;
+}
+
+.reseller-page .rp-collapsible .rp-collapsible-body.rp-collapse-show {
+  max-height: 800px;
+  opacity: 1;
+  margin-top: 0.5rem;
+  overflow: visible;
+}
+
+/* Fix: prevent horizontal scroll on details grid */
+.reseller-page .rp-details-grid {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.reseller-page .rp-details-grid .rp-detail-row {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.reseller-page .rp-details-grid .rp-detail-row span {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.reseller-page .rp-loading-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  gap: 1rem;
+  color: var(--rp-muted);
+}
+
+.reseller-page .rp-order-main {
+  order: 1;
+}
+
+.reseller-page .rp-order-side {
+  order: 2;
+}
+
+@media (min-width: 992px) {
+  .reseller-page .rp-order-main {
+    order: 2;
+  }
+  .reseller-page .rp-order-side {
+    order: 1;
+  }
+}
+
+/* Modals — centered, compact, standard */
+.rp-modal-backdrop {
+  z-index: 1080;
+  background: rgba(15, 23, 42, 0.55);
+  padding: 1rem;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.rp-modal-panel {
+  width: min(520px, 100%);
+  max-height: min(85vh, 100%);
+  border-radius: var(--rp-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  animation: rp-modal-in 0.2s ease-out;
+}
+
+@keyframes rp-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.rp-modal-panel .card-header {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: #fff;
+}
+
+.rp-modal-panel .card-header h5 {
+  font-size: 1rem;
+}
+
+.rp-modal-panel .card-body {
+  padding: 1.25rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rp-modal-panel .card-body .form-label {
+  font-size: 0.8125rem;
+  margin-bottom: 0.25rem;
+}
+
+.rp-modal-panel .card-body .form-control,
+.rp-modal-panel .card-body .form-select {
+  font-size: 0.875rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.rp-modal-panel .card-body .form-control-lg {
+  font-size: 1rem;
+  padding: 0.5rem 0.85rem;
+}
+
+/* Modal size variants */
+.rp-modal-panel.rp-modal-lg {
+  width: min(780px, 100%);
+}
+
+.rp-modal-panel.rp-modal-sm {
+  width: min(380px, 100%);
+}
+
+.reseller-page .rp-gradient-purple {
+  background: linear-gradient(135deg, var(--brand) 0%, #60a5fa 100%);
+  color: #fff;
+}
+.reseller-page .rp-gradient-green {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  color: #fff;
+}
+.reseller-page .rp-gradient-amber {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  color: #fff;
+}
+.reseller-page .rp-gradient-dark {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  color: #fff;
+}
+.reseller-page .rp-gradient-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Permanent FOUC guard: action buttons must keep pill shape even if a lazy
+   chunk's CSS arrives after first paint. These rules live in the global
+   bundle (imported by index.jsx) so they apply before any lazy chunk CSS. */
+.reseller-page .rp-profile-header .rp-actions .btn,
+.reseller-page .invoice-page .no-print .btn,
+.reseller-page .invoice-page .no-print .badge {
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Desktop: never wrap the profile actions into stretched full-width rows.
+   (Below lg the mobile stacked layout still applies.) */
+@media (min-width: 992px) {
+  .reseller-page .rp-profile-header .rp-actions {
+    flex-wrap: nowrap;
+    width: auto;
+  }
+  .reseller-page .rp-profile-header .rp-actions .btn {
+    flex: 0 0 auto;
+  }
+}
+
+/* Invoice toolbar: buttons keep natural pill size, never stretch. */
+.reseller-page .invoice-page .no-print .btn,
+.reseller-page .invoice-page .no-print .badge {
+  flex: 0 0 auto;
+}
+
+/* btn-white fallback: Bootstrap 5.3 has no btn-white; without this the
+   CommissionTab icon buttons render transparent. */
+.btn-white {
+  background-color: #fff;
+  color: #212529;
+}
+.btn-white:hover {
+  background-color: #f8f9fa;
+  color: #212529;
+}

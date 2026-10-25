@@ -1,0 +1,45 @@
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body, input, button, select, textarea, table, th, td, h1, h2, h3, h4, h5, h6, a, p, span, label {
+  font-family: var(--font-ui);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.reseller-page .card {
+  border: 0;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.reseller-page .table thead th {
+  white-space: nowrap;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.reseller-page .badge-soft {
+  border-radius: var(--r-pill);
+  padding: 6px 12px;
+  font-weight: 600;
+  font-size: 12px;
+}

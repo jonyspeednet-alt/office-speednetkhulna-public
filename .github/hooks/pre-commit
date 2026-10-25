@@ -1,0 +1,35 @@
+#!/bin/sh
+# Pre-commit secrets guard - blocks commits containing real credentials.
+# Install: cp .github/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# NOTE: patterns below are generic shapes only (no real values stored here).
+STAGED=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$STAGED" ] && exit 0
+FAIL=0
+# NOTE: for-loop (not pipe-to-while) so FAIL persists in this shell
+for f in $STAGED; do
+  case "$f" in
+    secrets/*|.env|.env.*|*/ssh_key*|*ACCESS_CREDENTIALS*|memory/*|MEMORY.md|TOOLS.md|USER.md|user_phone*.txt|tmp_*.js|check_*.js|clean_*.js|fix_*.js|rca_*.js|set_*.js|reset_*.js|verify_*.js|gen_local.js) echo "BLOCKED: $f matches ignored secret/internal pattern. Unstage it: git reset HEAD -- $f"; FAIL=1;;
+  esac
+done
+# scan ADDED lines only (deletions can't leak) for credential shapes (generic, no real secrets here).
+# Lines with ${PLACEHOLDERS} / process.env / documented examples are safe.
+# Exclude hook + example/template files from content scan so guard patterns don't self-block.
+SCAN_DIFF=$(git diff --cached -U0 -- . ':(exclude).github/hooks/*' ':(exclude)ops/pre-commit-hook.sh' ':(exclude)*.example' | grep "^+" | grep -v "^+++")
+if echo "$SCAN_DIFF" | grep -nE "PGPASSWORD=.+psql|-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY-----|\"password\"[[:space:]]*:[[:space:]]*\"[^$][^\"]{3,}\"|'password'[[:space:]]*:[[:space:]]*'[^$][^']{3,}'" | grep -v "process\.env\|REDACTED\|placeholder\|example\|change_me\|your_jwt\|\${" | grep -q .; then
+  echo "BLOCKED: staged diff looks like it contains a hardcoded credential. Use env vars / placeholders."
+  FAIL=1
+fi
+# merged from ops/pre-commit-hook.sh: key=value shapes (password|JWT_SECRET|...=) + new keys.
+# Excludes placeholders ($, ${, your_, <, {{), JS strict comparisons (===), short values,
+# and SQL positional params (=$1, = $2 — parameterized queries, not credentials).
+if echo "$SCAN_DIFF" | grep -nE "JWT_SECRET[[:space:]]*=|SESSION_SECRET[[:space:]]*=|API_TOKEN[[:space:]]*=|API_KEY[[:space:]]*=|ROUTER_VAULT_KEY[[:space:]]*=|password_enc|WHATSAPP_WORKER_API_KEY[[:space:]]*=|MAIN_DB_PASSWORD[[:space:]]*=|WHATSAPP_API_KEY[[:space:]]*=|password[[:space:]]*=" | grep -Ev "=\$|=\$\{|=your_|=<|=\{\{|===" | grep -Ev "=[[:space:]]*\\\$[0-9]" | grep -E "=.{4,}" | grep -v "process\.env\|REDACTED\|placeholder\|example\|change_me\|your_jwt\|your_\|\${" | grep -q .; then
+  echo "BLOCKED: staged diff contains key=value credential shape (JWT_SECRET/SESSION_SECRET/API_TOKEN/API_KEY/ROUTER_VAULT_KEY/password_enc/...). Use env vars / placeholders."
+  FAIL=1
+fi
+# public IPv4 guard: blocks real public IPs in added lines.
+# NOTE: 10./192.168./172.16.-31./127./0. are excluded (private/loopback); cloud metadata IP is docs-only.
+if echo "$SCAN_DIFF" | grep -nE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" | grep -v "process\.env\|REDACTED\|placeholder\|example\|\${" | grep -Ev "10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|127\.|0\.0\.0\.0" | grep -q .; then
+  echo "BLOCKED: staged diff contains a possible public IPv4. Use \${PROD_IP} placeholder."
+  FAIL=1
+fi
+exit $FAIL

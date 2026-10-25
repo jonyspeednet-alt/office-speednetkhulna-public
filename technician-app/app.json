@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "SpeedNet Technician",
+    "slug": "speednet-technician",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "primaryColor": "#1d4ed8",
+    "android": {
+      "package": "com.speednet.technician",
+      "versionCode": 1
+    },
+    "ios": {
+      "bundleIdentifier": "com.speednet.technician",
+      "buildNumber": "1"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/35c925a4-d94d-43f9-98ed-41bc398827b6",
+      "fallbackToCacheTimeout": 0
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "plugins": [
+      "expo-notifications",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow SpeedNet Technician to attach work photos to support tickets."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "35c925a4-d94d-43f9-98ed-41bc398827b6"
+      }
+    },
+    "owner": "jony96"
+  }
+}

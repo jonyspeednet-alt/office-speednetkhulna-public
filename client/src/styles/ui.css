@@ -1,0 +1,176 @@
+/* ============================================================
+   Shared UI components — built on design tokens (tokens.css).
+   Reusable, consistent primitives so pages stop re-inventing
+   cards / tables / badges / skeletons / empty states.
+   ============================================================ */
+
+/* ---- Card ---- */
+.ui-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---- Stat card (dashboard tiles) ---- */
+.ui-stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-4) var(--space-5);
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+.ui-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.ui-stat-card .ui-stat-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.ui-stat-card .ui-stat-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+/* ---- Table ---- */
+.ui-table-wrap {
+  width: 100%;
+  overflow-x: auto;            /* fixes mobile table overflow */
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--r-lg);
+}
+.ui-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.ui-table thead th {
+  background: var(--surface-muted);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 0.7rem 0.9rem;
+}
+.ui-table tbody td {
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text);
+  vertical-align: middle;
+}
+.ui-table tbody tr {
+  transition: background var(--t-fast) var(--ease);
+}
+.ui-table tbody tr:hover {
+  background: var(--surface-muted);
+}
+
+/* ---- Badge ---- */
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--r-pill);
+  padding: 4px 12px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  border: 1px solid transparent;
+}
+.ui-badge .ui-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.ui-badge.is-success { background: var(--success-soft); color: var(--success); border-color: var(--success-border); }
+.ui-badge.is-warn    { background: var(--warn-soft);    color: var(--warn); }
+.ui-badge.is-danger  { background: var(--danger-soft);  color: var(--danger-strong); border-color: var(--danger-border); }
+.ui-badge.is-info    { background: var(--info-soft);    color: var(--info); }
+
+/* ---- Skeleton (reuses a shimmer like Sidebar/AdminDashboard) ---- */
+@keyframes ui-shimmer {
+  0%   { background-position: -468px 0; }
+  100% { background-position: 468px 0; }
+}
+.ui-skeleton {
+  display: block;
+  border-radius: var(--r-sm);
+  background: linear-gradient(90deg, var(--surface-muted) 25%, var(--border) 37%, var(--surface-muted) 63%);
+  background-size: 936px 100%;
+  animation: ui-shimmer 1.4s ease-in-out infinite;
+  min-height: 1rem;
+}
+.ui-skeleton.ui-skeleton-line { height: 0.9rem; margin-bottom: 0.5rem; }
+.ui-skeleton.ui-skeleton-circle { border-radius: 50%; }
+
+/* ---- Empty state ---- */
+.ui-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--text-muted);
+}
+.ui-empty .ui-empty-icon {
+  font-size: 2rem;
+  color: var(--text-faint);
+}
+.ui-empty .ui-empty-title {
+  font-weight: 700;
+  color: var(--text);
+}
+.ui-empty .ui-empty-sub {
+  font-size: 0.85rem;
+}
+
+/* ---- Button helper (where Bootstrap btn isn't enough) ---- */
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.ui-btn:hover { transform: translateY(-1px); }
+.ui-btn-primary { background: var(--brand); color: var(--brand-contrast); }
+.ui-btn-primary:hover { background: var(--brand-strong); box-shadow: var(--shadow-sm); }
+.ui-btn-soft { background: var(--brand-soft); color: var(--brand); }
+
+/* ---- Accessibility: visible keyboard focus across the app ---- */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* ---- Required field marker ---- */
+.ui-required::after {
+  content: " *";
+  color: var(--danger);
+  font-weight: 700;
+}

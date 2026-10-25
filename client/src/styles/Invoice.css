@@ -1,0 +1,664 @@
+/* ============================================================
+   Invoice Page Styles — matches office.speednetkhulna.com design
+   ============================================================ */
+
+.inv-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  position: relative;
+  font-family: "Hind Siliguri", "Noto Sans Bengali", "Noto Serif Bengali", "SolaimanLipi", "Kalpurush", "Nirmala UI", Arial, sans-serif;
+}
+
+.inv-container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  z-index: 2;
+  background: #94a3b8;
+}
+
+.inv-container.status-due::before {
+  background: linear-gradient(180deg, #ef4444 0%, #f97316 100%);
+}
+
+.inv-container.status-paid::before {
+  background: linear-gradient(180deg, #10b981 0%, #14b8a6 100%);
+}
+
+/* --- Watermark --- */
+.inv-watermark {
+  position: absolute;
+  top: 80px;
+  right: 24px;
+  transform: none;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #991b1b;
+  border: 1px solid rgba(153, 27, 27, 0.3);
+  background: rgba(254, 242, 242, 0.95);
+  padding: 6px 12px;
+  border-radius: 999px;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(185, 28, 28, 0.15);
+}
+
+.inv-watermark.paid {
+  color: #065f46;
+  border-color: rgba(6, 95, 70, 0.3);
+  background: rgba(236, 253, 245, 0.95);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.12);
+}
+
+/* --- Header --- */
+.inv-header {
+  background: #fff;
+  padding: 40px 50px;
+  border-bottom: 1px solid #e2e8f0;
+  position: relative;
+  z-index: 1;
+  font-family: "Hind Siliguri", "Noto Sans Bengali", "Noto Serif Bengali", "SolaimanLipi", "Kalpurush", "Nirmala UI", Arial, sans-serif;
+}
+
+.inv-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: -0.5px;
+}
+
+.inv-logo {
+  max-height: 100px;
+  max-width: 400px;
+  width: auto;
+  height: auto;
+}
+
+.inv-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.inv-number {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* --- Body --- */
+.inv-body {
+  padding: 40px 50px;
+  position: relative;
+  z-index: 1;
+  font-family: "Hind Siliguri", "Noto Sans Bengali", "Noto Serif Bengali", "SolaimanLipi", "Kalpurush", "Nirmala UI", Arial, sans-serif;
+}
+
+.inv-info-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.inv-info-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.inv-info-text strong {
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* --- Meta Grid --- */
+.inv-meta {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 30px;
+}
+
+.inv-meta small {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.inv-meta .inv-meta-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.text-primary-custom {
+  color: var(--brand) !important;
+}
+
+/* --- Table --- */
+.inv-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 30px;
+  border: 2px solid #94a3b8;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  font-family: "Hind Siliguri", "Noto Sans Bengali", "Noto Serif Bengali", "SolaimanLipi", "Kalpurush", "Nirmala UI", Arial, sans-serif;
+}
+
+.inv-table th {
+  background: #e2e8f0;
+  color: #1e293b;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 12px 15px;
+  border-bottom: 2px solid #94a3b8;
+  border-right: 2px solid #94a3b8;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.inv-table td {
+  padding: 16px 15px;
+  border-bottom: 1.5px solid #cbd5e1;
+  border-right: 1.5px solid #cbd5e1;
+  color: #1f2937;
+  font-weight: 500;
+  vertical-align: middle;
+  background: #fff;
+}
+
+.inv-table th:last-child,
+.inv-table td:last-child {
+  border-right: none;
+}
+
+.inv-table tbody tr:nth-child(even) td {
+  background: #fbfdff;
+}
+
+.inv-table tbody tr:hover td {
+  background: #f4f8ff;
+}
+
+.inv-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Badges --- */
+.inv-badge {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-increase {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge-decrease {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.badge-standard {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+/* --- Summary --- */
+.inv-summary,
+.inv-summary table,
+.inv-summary td,
+.inv-summary th,
+.inv-summary tr,
+.inv-summary tbody {
+  font-family: "Hind Siliguri", "Noto Sans Bengali", "Noto Serif Bengali", "SolaimanLipi", "Kalpurush", "Nirmala UI", Arial, sans-serif !important;
+}
+.inv-summary td {
+  padding: 6px 0;
+  font-size: 14px;
+  color: #475569;
+}
+
+.inv-total-row td {
+  padding-top: 15px;
+  border-top: 2px solid #e2e8f0 !important;
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.inv-summary .inv-total-row td:last-child {
+  padding-left: 18px;
+  white-space: nowrap;
+  text-align: right;
+}
+.inv-summary-amount {
+  display: inline-block;
+  padding-left: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Footer --- */
+.inv-footer {
+  background: #f8fafc;
+  padding: 30px 50px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 13px;
+  color: #64748b;
+  position: relative;
+  z-index: 1;
+  font-family: "Hind Siliguri", "Noto Sans Bengali", "Noto Serif Bengali", "SolaimanLipi", "Kalpurush", "Nirmala UI", Arial, sans-serif;
+}
+
+.inv-summary-table td {
+  padding: 6px 12px;
+  border-bottom: 1px dashed #e2e8f0;
+  font-family: "Hind Siliguri", "Noto Sans Bengali", "Noto Serif Bengali", "SolaimanLipi", "Kalpurush", "Nirmala UI", Arial, sans-serif !important;
+}
+
+/* Force font on all invoice content */
+.inv-container * {
+  font-family: "Hind Siliguri", "Noto Sans Bengali", "Noto Serif Bengali", "SolaimanLipi", "Kalpurush", "Nirmala UI", Arial, sans-serif !important;
+}
+
+@media (max-width: 768px) {
+  .inv-watermark {
+    top: 70px;
+    right: 14px;
+    font-size: 0.68rem;
+    padding: 5px 10px;
+  }
+}
+
+/* --- Print --- */
+@media print {
+  body {
+    background: #fff !important;
+  }
+
+  .no-print,
+  .btn,
+  .sidebar,
+  nav,
+  .layout-sidebar,
+  .sidebar-overlay,
+  .mobile-toggle {
+    display: none !important;
+  }
+
+  .inv-container {
+    box-shadow: none !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  .inv-header,
+  .inv-body,
+  .inv-footer {
+    padding: 20px 30px !important;
+  }
+
+  .inv-table th {
+    background-color: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .layout-content,
+  .main-content,
+  [class*="content"],
+  [class*="main"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* ── Multi-segment rate change rows ── */
+.inv-segment-row td {
+  background: #fafbff !important;
+  font-size: 13px;
+}
+
+.inv-segment-row td:not(:first-child) {
+  padding-left: 20px;
+}
+
+.inv-subtotal-row td {
+  background: #f1f5f9 !important;
+  border-top: 1px dashed #cbd5e1 !important;
+  font-size: 12px;
+  color: #475569;
+}
+
+.badge-rate-change {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* ── Billing Period Card ── */
+.billing-period-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+
+/* ── Day Input ── */
+.day-input {
+  width: 60px !important;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ── Day Strip ── */
+.day-strip {
+  gap: 3px;
+}
+
+.day-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 4px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1;
+}
+
+.day-pill:hover {
+  background: #eef2ff;
+  border-color: #818cf8;
+  color: #4338ca;
+}
+
+.day-pill.in-range {
+  background: #e0e7ff;
+  border-color: #818cf8;
+  color: #4338ca;
+}
+
+.day-pill.edge {
+  background: #6366f1;
+  border-color: #4f46e5;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+}
+
+.day-pill.selected {
+  background: #6366f1;
+  border-color: #4f46e5;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 640px) {
+  .invoice-page, .static-invoice-page { padding-top: 64px !important; }
+  .billing-period-card {
+    padding: 12px;
+  }
+  .day-pill {
+    min-width: 26px;
+    height: 26px;
+    font-size: 0.65rem;
+  }
+  .day-input {
+    width: 50px !important;
+  }
+}
+
+/* ── Change Details Inline Notes ── */
+.inv-change-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: normal;
+  text-align: left;
+}
+
+/* Keep the payable balance readable before the detailed calculation. */
+.inv-balance-overview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 24px;
+  background: #f0f7ff;
+  border: 1px solid #cbdff5;
+  border-radius: 10px;
+}
+.inv-balance-overview h2 { font-size: 20px; margin: 4px 0 8px; color: #172b4d; }
+.inv-balance-overview p { font-size: 13px; color: #475569; margin: 0; max-width: 370px; }
+.inv-balance-overview > strong { font-size: 26px; color: #172b4d; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.inv-section-title { font-size: 17px; font-weight: 700; color: #1e293b; }
+.inv-calculation-help { font-size: 13px; color: #475569; line-height: 1.6; }
+.inv-container .inv-breakdown-scroll .inv-table { min-width: 680px; }
+.inv-container .inv-table th, .inv-container .inv-table td { padding: 10px 9px; }
+.inv-container .inv-segment-row td:not(:first-child) { padding-left: 9px; }
+.inv-container .inv-label { color: #64748b; }
+.inv-container .inv-watermark { position: static; width: fit-content; margin: 14px 20px 0 auto; box-shadow: none; }
+.inv-container .inv-logo { max-width: 100%; height: auto; }
+.inv-container .inv-header { padding-top: 22px; padding-bottom: 22px; }
+.inv-container .inv-logo { max-height: 72px; }
+.inv-period-picker { margin-bottom: 12px; font-size: 13px; color: #475569; }
+.inv-period-picker summary { cursor: pointer; padding: 6px 0; }
+.billing-period-card > .d-flex:last-child { flex-wrap: wrap; gap: 12px; }
+.inv-container .inv-brand { min-width: 0; max-width: 55%; }
+.inv-container .table-responsive:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+.inv-container .inv-retro-table { min-width: 620px; }
+.inv-container .inv-info-text { overflow-wrap: anywhere; }
+.inv-container .inv-summary { font-variant-numeric: tabular-nums; }
+.reseller-page:has(#invoiceContent) > .no-print,
+.reseller-page:has(#invoiceContent) > .no-print > .d-flex { flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 640px) {
+  .inv-container .inv-header, .inv-container .inv-body, .inv-container .inv-footer { padding: 20px 16px !important; }
+  .inv-container .inv-header { gap: 16px; align-items: flex-start !important; }
+  .inv-container .inv-number { font-size: 15px; }
+  .inv-container .inv-meta { margin-left: 0; margin-right: 0; padding: 12px 8px; }
+  .inv-container .inv-meta > div { padding-left: 6px; padding-right: 6px; }
+  .inv-container .inv-meta-val { font-size: 12px; overflow-wrap: anywhere; }
+  .inv-balance-overview { align-items: flex-start; flex-direction: column; gap: 12px; padding: 16px; }
+  .inv-container .inv-retro-panel { margin: 16px; }
+  .inv-container .inv-info-text { font-size: 12px; }
+  .inv-container .inv-info-text strong { font-size: 13px; }
+  .billing-period-card .day-pill { min-width: 34px; height: 34px; font-size: 12px; }
+}
+
+@media print {
+  .inv-container .table-responsive { overflow: visible !important; }
+  .inv-container .inv-breakdown-scroll .inv-table, .inv-container .inv-retro-table { min-width: 0; table-layout: fixed; }
+  .inv-container .inv-table th, .inv-container .inv-table td { font-size: 9px; padding: 6px 4px; overflow-wrap: anywhere; }
+  .inv-container .inv-table th { position: static; }
+  .inv-container .inv-change-note { font-size: 9px; padding: 2px 4px; }
+  .inv-container tr, .inv-balance-overview { break-inside: avoid; }
+  .inv-container thead { display: table-header-group; }
+}
+
+.inv-change-note .inv-arrow-icon {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.inv-change-note.note-bw,
+.inv-change-note.note-bw-up {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.inv-change-note.note-bw-down {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.inv-change-note.note-rate {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.inv-change-note.note-corrected {
+  background: #ede9fe;
+  color: #5b21b6;
+  border: 1px solid #c4b5fd;
+}
+
+.inv-rate-delta {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+.inv-rate-delta.rate-up {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.inv-rate-delta.rate-down {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* ── Retroactive Corrections Audit Panel ── */
+.inv-retro-panel {
+  margin: 24px 40px 0;
+  border: 1px solid #e0e7ff;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8f9ff;
+}
+
+.inv-retro-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.inv-retro-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.25);
+  border-radius: 999px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 800;
+  margin-left: auto;
+}
+
+.inv-retro-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.inv-retro-table th {
+  padding: 7px 12px;
+  background: #eef2ff;
+  color: #4338ca;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #c7d2fe;
+}
+
+.inv-retro-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e8ecff;
+  vertical-align: middle;
+  color: #374151;
+}
+
+.inv-retro-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.inv-retro-table tbody tr:hover td {
+  background: #f0f4ff;
+}
+
+.inv-retro-note {
+  color: #4b5563;
+  font-style: italic;
+}
+
+.inv-retro-footer {
+  padding: 8px 14px;
+  background: #eef2ff;
+  color: #4338ca;
+  font-size: 11px;
+  border-top: 1px solid #c7d2fe;
+}
+
+@media print {
+  .inv-retro-panel {
+    border: 1px solid #c7d2fe !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .inv-retro-header {
+    background: #4f46e5 !important;
+  }
+}

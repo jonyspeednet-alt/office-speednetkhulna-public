@@ -1,0 +1,544 @@
+.manage-leaves-page {
+  gap: 1.25rem;
+  padding-top: 1.5rem;
+}
+
+.mlv-hero {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.1rem;
+  border-radius: 16px;
+  background: linear-gradient(125deg, #0a3d77, #1756d9 55%, #23a6d5);
+  color: #f6f8ff;
+  box-shadow: 0 10px 24px rgba(10, 61, 119, 0.22);
+}
+
+.mlv-label {
+  display: none;
+}
+
+.mlv-hero h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.mlv-hero p {
+  display: none;
+}
+
+.mlv-meta {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.8rem;
+}
+
+.mlv-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.mlv-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.mlv-kpi {
+  border-radius: 10px;
+  padding: 0.35rem 0.8rem;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  min-width: 86px;
+  text-align: center;
+}
+
+.mlv-kpi span {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
+
+.mlv-kpi strong {
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.mlv-kpi.pending strong {
+  color: #ffe599;
+}
+
+.mlv-kpi.approved strong {
+  color: #bbf7d0;
+}
+
+.mlv-kpi.rejected strong {
+  color: #fecaca;
+}
+
+.mlv-toolbar {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid #e4eaf5;
+  padding: 1rem;
+  box-shadow: 0 10px 26px rgba(19, 48, 85, 0.06);
+}
+
+/* Leave WhatsApp sender number (login maintenance) — compact single row */
+.mlv-wa-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e4eaf5;
+  padding: 0.55rem 0.9rem;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 6px 18px rgba(19, 48, 85, 0.05);
+}
+.mlv-wa-card.mlv-wa-compact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mlv-wa-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.mlv-wa-title { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.mlv-wa-title strong { font-size: 13px; }
+.mlv-wa-state { font-size: 11.5px; font-weight: 700; }
+.mlv-wa-card .mlv-wa-btn { margin-left: auto; padding: 0.3rem 0.8rem; font-size: 12px; flex-shrink: 0; }
+.mlv-wa-card .mlv-wa-btn + .mlv-wa-btn { margin-left: 0; }
+
+/* Leave WhatsApp QR modal */
+.mlv-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1040;
+  padding: 16px;
+}
+.mlv-modal {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  width: min(440px, 100%);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.3);
+  text-align: center;
+}
+.mlv-modal h3 { font-size: 18px; font-weight: 800; margin: 0 0 2px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.mlv-modal-sub { font-size: 12px; color: #64748b; margin: 0 0 12px; }
+.mlv-modal-status { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px; font-size: 14px; }
+.mlv-modal-account { font-size: 13px; margin-bottom: 12px; }
+.mlv-modal-qr { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 16px; }
+.mlv-modal-actions { display: flex; justify-content: center; gap: 10px; }
+.mlv-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  color: #94a3b8;
+  cursor: pointer;
+  line-height: 1;
+}
+.mlv-modal-close:hover { color: #1e293b; }
+
+.mlv-filter-form {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) 140px 130px auto auto;
+  gap: 0.6rem;
+}
+
+.mlv-filter-form select,
+.mlv-input {
+  border: 1px solid #d9e2f0;
+  border-radius: 12px;
+  background: #fff;
+  min-height: 42px;
+}
+
+.mlv-filter-form select {
+  padding: 0.6rem 0.7rem;
+  color: #1f2a37;
+}
+
+.mlv-input {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 0.7rem;
+}
+
+.mlv-input i {
+  color: #5c6f86;
+}
+
+.mlv-input input {
+  border: none;
+  width: 100%;
+  outline: none;
+  color: #0f172a;
+  background: transparent;
+}
+
+.mlv-btn {
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  min-height: 42px;
+  padding: 0 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.mlv-btn.primary {
+  color: #fff;
+  background: linear-gradient(120deg, #0b55d9, #0f75ff);
+}
+
+.mlv-btn.secondary {
+  color: #1d3557;
+  background: #eef4ff;
+}
+
+.mlv-status-tabs {
+  margin-top: 0.85rem;
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.mlv-status-tab {
+  border: 1px solid #d9e3f3;
+  border-radius: 999px;
+  background: #fff;
+  color: #334e68;
+  padding: 0.38rem 0.85rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.mlv-status-tab.active {
+  border-color: #0d5bd8;
+  background: #eaf1ff;
+  color: #0d5bd8;
+}
+
+.mlv-error {
+  border-radius: 12px;
+  border: 1px solid #ffd6d6;
+  background: #fff6f6;
+  color: #b42318;
+  padding: 0.7rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.mlv-table-card {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid #e4eaf5;
+  box-shadow: 0 14px 34px rgba(31, 52, 92, 0.08);
+  overflow: hidden;
+}
+
+.mlv-table-card > header {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid #edf2fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mlv-table-card h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f2744;
+}
+
+.mlv-table-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.mlv-table thead th {
+  background: #f7faff;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #486581;
+  border-bottom: 1px solid #e6edf8;
+  padding: 0.8rem;
+}
+
+.mlv-table td {
+  padding: 0.88rem 0.8rem;
+  border-bottom: 1px solid #edf2fa;
+  vertical-align: middle;
+}
+
+.mlv-main-row {
+  transition: background 0.18s ease;
+}
+
+.mlv-main-row:hover {
+  background: #f8fbff;
+}
+
+.mlv-main-row.expanded {
+  background: #f8fbff;
+}
+
+.expand-col {
+  width: 42px;
+  text-align: center;
+  color: #4f46e5;
+}
+
+.expand-col .rotated {
+  transform: rotate(90deg);
+}
+
+.static-dot {
+  font-size: 0.46rem;
+  color: #a8b6c8;
+}
+
+.mlv-employee {
+  display: flex;
+  align-items: center;
+  gap: 0.68rem;
+}
+
+.mlv-avatar {
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(46, 78, 117, 0.15);
+  border: 2px solid #fff;
+}
+
+.mlv-employee strong {
+  display: block;
+  color: #102a43;
+}
+
+.mlv-employee small {
+  color: #627d98;
+}
+
+.mlv-detail strong {
+  display: block;
+  color: #0f2744;
+}
+
+.mlv-detail button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #1d4ed8;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.mlv-table td strong {
+  display: block;
+  font-weight: 700;
+  color: #102a43;
+}
+
+.mlv-table td small {
+  color: #7a8899;
+}
+
+.mlv-days-badge {
+  background: #e8f0ff;
+  color: #0d4fb8;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.mlv-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.24rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+}
+
+.mlv-status.pending {
+  background: #fffaeb;
+  border-color: #fedf89;
+  color: #b54708;
+}
+
+.mlv-status.approved {
+  background: #ecfdf3;
+  border-color: #abefc6;
+  color: #067647;
+}
+
+.mlv-status.rejected {
+  background: #fef3f2;
+  border-color: #fecdca;
+  color: #b42318;
+}
+
+.mlv-actions {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.mlv-actions button,
+.mlv-actions a {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.16s ease;
+}
+
+.mlv-actions button:hover,
+.mlv-actions a:hover {
+  transform: translateY(-1px);
+}
+
+.mlv-actions .ok {
+  color: #057647;
+  background: #e9fcef;
+}
+
+.mlv-actions .danger {
+  color: #b42318;
+  background: #fff1f0;
+}
+
+.mlv-actions .warn {
+  color: #b54708;
+  background: #fff7e6;
+}
+
+.mlv-actions .info {
+  color: #0369a1;
+  background: #e0f2fe;
+}
+
+.mlv-actions a {
+  color: #1d4ed8;
+  background: #e8f0ff;
+}
+
+.mlv-sub-row {
+  background: #fbfdff;
+}
+
+.mlv-sub-row td {
+  font-size: 0.86rem;
+  color: #486581;
+}
+
+.mlv-sub-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mlv-sub-detail .line-mark {
+  width: 2px;
+  height: 22px;
+  border-radius: 999px;
+  background: #b8c7dc;
+}
+
+.mlv-sub-detail strong {
+  color: #243b53;
+}
+
+.mlv-sub-detail small {
+  display: inline-block;
+  margin-top: 0.1rem;
+}
+
+.mlv-btn-sub-action {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0369a1;
+  background: #e0f2fe;
+  cursor: pointer;
+  transition: transform 0.16s ease;
+}
+
+.mlv-btn-sub-action:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1199px) {
+  .mlv-hero {
+    flex-wrap: wrap;
+  }
+
+  .mlv-kpi-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .mlv-filter-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mlv-input {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .manage-leaves-page {
+    padding-top: 0.8rem;
+  }
+
+  .mlv-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mlv-filter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .mlv-table-card > header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mlv-table thead th,
+  .mlv-table td {
+    white-space: nowrap;
+  }
+}

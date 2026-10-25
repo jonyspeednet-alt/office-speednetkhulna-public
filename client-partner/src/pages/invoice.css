@@ -1,0 +1,50 @@
+.invoice-page {
+  background: #f1f5f9;
+  font-family: 'Plus Jakarta Sans', 'Hind Siliguri', 'Noto Sans Bengali', 'SolaimanLipi', sans-serif;
+  color: #1e293b;
+  min-height: 100vh;
+  padding: 30px 0;
+  -webkit-print-color-adjust: exact;
+}
+.invoice-container {
+  max-width: 850px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  position: relative;
+}
+.invoice-header { padding: 40px 50px; border-bottom: 1px solid #e2e8f0; }
+.invoice-title { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+.invoice-number { font-size: 18px; font-weight: 700; color: #0f172a; }
+.invoice-body { padding: 40px 50px; }
+.info-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; font-weight: 600; margin-bottom: 8px; }
+.info-text { font-size: 14px; font-weight: 500; color: #334155; line-height: 1.6; }
+.info-text strong { color: #0f172a; font-weight: 700; }
+.meta-container { background: #f8fafc; border-radius: 8px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 30px; }
+.meta-item small { display: block; font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+.meta-item div { font-size: 15px; font-weight: 700; color: #0f172a; }
+.text-primary-custom { color: #4318ff; }
+.table-invoice { width: 100%; border-collapse: separate; border-spacing: 0; margin-bottom: 30px; }
+.table-invoice th { background: #f1f5f9; color: #475569; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; padding: 12px 15px; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+.table-invoice td { padding: 16px 15px; border-bottom: 1px solid #f1f5f9; color: #334155; font-weight: 500; vertical-align: middle; }
+.badge-inv { padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; display: inline-block; }
+.bg-soft-success { background: #dcfce7; color: #166534; }
+.bg-soft-danger { background: #fee2e2; color: #991b1b; }
+.bg-soft-info { background: #e0f2fe; color: #075985; }
+.summary-table td { padding: 6px 0; font-size: 14px; color: #475569; }
+.summary-table .total-row td { padding-top: 15px; border-top: 2px solid #e2e8f0; font-size: 16px; font-weight: 800; color: #0f172a; }
+.invoice-footer { background: #f8fafc; padding: 30px 50px; border-top: 1px solid #e2e8f0; text-align: center; font-size: 13px; color: #64748b; }
+.watermark {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 8rem; font-weight: 900; text-transform: uppercase;
+  color: rgba(220, 53, 69, 0.08); border: 8px solid rgba(220, 53, 69, 0.08);
+  padding: 10px 40px; border-radius: 10px; z-index: 0; pointer-events: none; user-select: none;
+}
+.watermark.paid { color: rgba(25, 135, 84, 0.08); border-color: rgba(25, 135, 84, 0.08); }
+@media print {
+  .invoice-page { background: #fff; padding: 0; }
+  .invoice-container { box-shadow: none; margin: 0; max-width: 100%; border-radius: 0; }
+  .no-print { display: none !important; }
+}

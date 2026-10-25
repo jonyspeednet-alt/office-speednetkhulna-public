@@ -1,0 +1,775 @@
+.asset-management-page {
+  --asset-bg: radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 34%),
+    radial-gradient(circle at right top, rgba(16, 185, 129, 0.14), transparent 26%),
+    linear-gradient(180deg, #f8fafc 0%, #f3f6fb 100%);
+  --asset-surface: rgba(255, 255, 255, 0.88);
+  --asset-border: rgba(148, 163, 184, 0.22);
+  --asset-text: #0f172a;
+  --asset-muted: #64748b;
+  background: var(--asset-bg);
+  color: var(--asset-text);
+}
+
+.asset-management-page .asset-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.85fr);
+  gap: 1rem;
+  align-items: stretch;
+  padding: 1.25rem;
+  border: 1px solid var(--asset-border);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+.asset-management-page .asset-hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+  padding: 0.35rem 0.75rem;
+  width: fit-content;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--asset-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.asset-management-page .asset-hero h3 {
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  letter-spacing: -0.03em;
+}
+
+.asset-management-page .asset-hero-text {
+  max-width: 58ch;
+  color: var(--asset-muted);
+  font-size: 0.98rem;
+}
+
+.asset-management-page .asset-hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.asset-management-page .asset-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.42rem 0.8rem;
+  background: rgba(15, 23, 42, 0.05);
+  color: #0f172a;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.asset-management-page .asset-hero-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
+.asset-management-page .asset-search {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--asset-border);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.asset-management-page .asset-search i {
+  color: var(--asset-muted);
+}
+
+.asset-management-page .asset-search .form-control {
+  background: transparent;
+  padding-left: 0;
+  font-size: 0.95rem;
+}
+
+.asset-management-page .asset-search .form-control::placeholder {
+  color: #94a3b8;
+}
+
+.asset-management-page .asset-search-btn {
+  align-self: flex-end;
+  border-radius: 0.9rem;
+  padding: 0.75rem 1rem;
+  min-width: 160px;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.22);
+}
+
+.asset-management-page .asset-summary-grid .asset-metric-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.15rem;
+  border: 1px solid var(--asset-border);
+  background: rgba(255, 255, 255, 0.88);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.asset-management-page .asset-summary-grid .asset-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.08);
+}
+
+.asset-management-page .asset-summary-grid .asset-metric-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.3rem;
+}
+
+.asset-management-page .asset-tone-blue::before { background: linear-gradient(180deg, #3b82f6, #60a5fa); }
+.asset-management-page .asset-tone-gold::before { background: linear-gradient(180deg, #f59e0b, #fbbf24); }
+.asset-management-page .asset-tone-rose::before { background: linear-gradient(180deg, #f43f5e, #fb7185); }
+.asset-management-page .asset-tone-teal::before { background: linear-gradient(180deg, #14b8a6, #2dd4bf); }
+
+.asset-management-page .asset-summary-grid .card-body {
+  padding: 1.15rem 1.15rem 1.1rem 1.25rem;
+}
+
+.asset-management-page .asset-summary-grid .display-6 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  line-height: 1;
+}
+
+.asset-management-page .asset-quick-card {
+  border-radius: 1.15rem;
+  border: 1px solid var(--asset-border);
+  background: linear-gradient(145deg, rgba(255, 253, 247, 0.98), rgba(255, 255, 255, 0.92));
+}
+
+.asset-management-page .asset-inline-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.asset-management-page .asset-inline-stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  color: #475569;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.asset-management-page .asset-tab-rail {
+  position: sticky;
+  top: 0.75rem;
+  z-index: 20;
+  border-radius: 1.2rem;
+  border: 1px solid var(--asset-border);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.asset-management-page .asset-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.45rem;
+  min-width: 1.45rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  color: #334155;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.asset-management-page .asset-tab-btn-active .asset-tab-count {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+.asset-management-page .asset-tab-count-danger {
+  background: rgba(239, 68, 68, 0.16);
+  color: #b91c1c;
+}
+
+.asset-management-page .asset-tab-count-warning {
+  background: rgba(245, 158, 11, 0.18);
+  color: #b45309;
+}
+
+.asset-management-page .asset-loading-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: rgba(59, 130, 246, 0.06);
+  color: #1d4ed8;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.asset-management-page .asset-row {
+  cursor: pointer;
+}
+
+.asset-management-page .asset-bar {
+  height: 6px;
+  min-width: 60px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.22);
+  overflow: hidden;
+}
+
+.asset-management-page .asset-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+.asset-management-page .asset-toast {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 380px;
+  padding: 0.8rem 1.05rem;
+  border-radius: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+  animation: asset-toast-in 0.22s ease;
+}
+
+.asset-management-page .asset-toast-success {
+  background: #065f46;
+  color: #ecfdf5;
+}
+
+.asset-management-page .asset-toast-error {
+  background: #991b1b;
+  color: #fef2f2;
+}
+
+@keyframes asset-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.asset-management-page .asset-tab-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  color: #334155;
+  padding: 0.5rem 0.95rem;
+  font-weight: 600;
+}
+
+.asset-management-page .asset-tab-btn:hover {
+  background: #fff;
+  border-color: rgba(37, 99, 235, 0.28);
+}
+
+.asset-management-page .asset-tab-btn-active {
+  background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.18);
+}
+
+.asset-management-page .desk-map-body {
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.9), rgba(255, 255, 255, 0.75));
+}
+
+.asset-management-page .desk-layout-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.asset-management-page .desk-layout-summary > div {
+  padding: 0.75rem 0.7rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(255, 255, 255, 0.78);
+  text-align: center;
+}
+
+.asset-management-page .desk-layout-summary strong {
+  display: block;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+
+.asset-management-page .desk-layout-summary span {
+  display: block;
+  margin-top: 0.12rem;
+  font-size: 0.72rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.asset-management-page .desk-zone {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 1rem;
+  padding: 0.9rem;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.asset-management-page .desk-zone:last-child {
+  margin-bottom: 0;
+}
+
+.asset-management-page .desk-zone-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.35rem 0 0.8rem;
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.35);
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.asset-management-page .desk-zone-title small {
+  margin-left: 0.5rem;
+  font-size: 0.72rem;
+  color: #64748b;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 600;
+}
+
+.asset-management-page .desk-zone-head {
+  background: linear-gradient(180deg, rgba(14, 116, 144, 0.07), rgba(255, 255, 255, 0.74));
+  border-color: rgba(14, 116, 144, 0.25);
+}
+
+.asset-management-page .desk-zone-branch {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.04), rgba(255, 255, 255, 0.74));
+  border-color: rgba(51, 65, 85, 0.22);
+}
+
+.asset-management-page .desk-office-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.35rem 0;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: #334155;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.asset-management-page .desk-office-title small {
+  margin-left: 0.45rem;
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.asset-management-page .desk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.85rem;
+}
+
+.asset-management-page .desk-card {
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.9rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  min-height: 166px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.asset-management-page .desk-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.asset-management-page .desk-card-selected {
+  border-color: rgba(37, 99, 235, 0.55);
+  box-shadow: 0 14px 36px rgba(37, 99, 235, 0.12);
+}
+
+.asset-management-page .desk-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.asset-management-page .desk-no {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.asset-management-page .desk-pill {
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.asset-management-page .desk-pill-assigned {
+  background: rgba(16, 185, 129, 0.14);
+  color: #047857;
+}
+
+.asset-management-page .desk-pill-empty {
+  background: rgba(148, 163, 184, 0.16);
+  color: #475569;
+}
+
+.asset-management-page .desk-card-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  min-height: 1.3rem;
+}
+
+.asset-management-page .desk-card-meta {
+  color: #475569;
+  font-size: 0.76rem;
+  margin-top: 0.15rem;
+  min-height: 1.1rem;
+}
+
+.asset-management-page .desk-card-email {
+  color: #64748b;
+  font-size: 0.78rem;
+  margin-top: 0.25rem;
+  word-break: break-word;
+}
+
+.asset-management-page .desk-card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 0.8rem;
+  color: #475569;
+  font-size: 0.72rem;
+}
+
+.asset-management-page .desk-card-stats span {
+  padding: 0.25rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.05);
+}
+
+.asset-management-page .desk-detail-shell .card-body {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.9));
+}
+
+.asset-management-page .desk-detail-hero {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(37, 99, 235, 0.82));
+  color: #fff;
+}
+
+.asset-management-page .desk-detail-no {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.asset-management-page .desk-detail-office {
+  margin-top: 0.2rem;
+  opacity: 0.9;
+}
+
+.asset-management-page .desk-detail-user {
+  margin-top: 0.6rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.asset-management-page .desk-detail-email {
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  opacity: 0.9;
+}
+
+.asset-management-page .desk-detail-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.asset-management-page .desk-detail-summary > div {
+  padding: 0.8rem 0.75rem;
+  border-radius: 0.95rem;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  text-align: center;
+}
+
+.asset-management-page .desk-detail-summary strong {
+  display: block;
+  font-size: 1.15rem;
+  color: #0f172a;
+}
+
+.asset-management-page .desk-detail-summary span {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.15rem;
+}
+
+.asset-management-page .desk-detail-list {
+  padding: 0.95rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.asset-management-page .desk-detail-list-title {
+  margin-bottom: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #475569;
+}
+
+.asset-management-page .desk-history-item {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.asset-management-page .desk-history-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.asset-management-page .desk-history-item:first-of-type {
+  padding-top: 0;
+}
+
+.asset-management-page .desk-detail-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.asset-management-page .desk-detail-item:last-child {
+  border-bottom: 0;
+}
+
+.asset-management-page .card {
+  border-radius: 1rem;
+  border: 1px solid var(--asset-border);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.asset-management-page .card-header {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  background: transparent !important;
+}
+
+.asset-management-page .table {
+  margin-bottom: 0;
+}
+
+.asset-management-page .table thead th {
+  border-bottom-color: rgba(148, 163, 184, 0.2);
+  color: #475569;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.asset-management-page .table tbody tr:hover {
+  background: rgba(59, 130, 246, 0.04);
+}
+
+.asset-management-page .table td,
+.asset-management-page .table th {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+.asset-management-page .badge {
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.asset-management-page .btn-outline-dark {
+  border-color: rgba(15, 23, 42, 0.18);
+}
+
+.asset-management-page .btn-outline-dark:hover,
+.asset-management-page .btn-dark {
+  box-shadow: 0 10px 18px rgba(15, 23, 42, 0.12);
+}
+
+.asset-management-page .form-control,
+.asset-management-page .form-select,
+.asset-management-page select,
+.asset-management-page textarea {
+  border-radius: 0.9rem;
+  border-color: rgba(148, 163, 184, 0.28);
+}
+
+.asset-management-page .form-control:focus,
+.asset-management-page .form-select:focus,
+.asset-management-page select:focus,
+.asset-management-page textarea:focus {
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.12);
+  border-color: #3b82f6;
+}
+
+.asset-management-page .btn-primary {
+  border-radius: 0.9rem;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18);
+}
+
+.asset-management-page .btn-outline-primary {
+  border-radius: 0.8rem;
+}
+
+.asset-management-page .asset-modal-overlay {
+  backdrop-filter: blur(6px);
+}
+
+.asset-management-page .asset-modal-shell {
+  border-radius: 1.4rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.asset-management-page .desk-transfer-modal {
+  border-radius: 1.25rem;
+}
+
+.asset-management-page .desk-transfer-from {
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(248, 250, 252, 0.9);
+}
+
+.asset-management-page .desk-transfer-error {
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(254, 226, 226, 0.6);
+  color: #b91c1c;
+  border-radius: 0.75rem;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.asset-management-page .desk-transfer-preview {
+  border: 1px dashed rgba(148, 163, 184, 0.28);
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 0.8rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.asset-management-page .asset-component-shell {
+  margin-top: 0.35rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 0.9rem;
+  background: rgba(248, 250, 252, 0.78);
+  padding: 0.85rem;
+}
+
+.asset-management-page .asset-component-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.asset-management-page .asset-component-history {
+  border-top: 1px dashed rgba(148, 163, 184, 0.45);
+  padding-top: 0.65rem;
+}
+
+@media (max-width: 992px) {
+  .asset-management-page .asset-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .asset-management-page .asset-hero-actions {
+    align-items: stretch;
+  }
+
+  .asset-management-page .asset-search-btn {
+    width: 100%;
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 576px) {
+  .asset-management-page {
+    padding-top: 1rem;
+  }
+
+  .asset-management-page .asset-hero {
+    padding: 1rem;
+  }
+
+  .asset-management-page .asset-hero-chips {
+    gap: 0.4rem;
+  }
+
+  .asset-management-page .asset-chip {
+    font-size: 0.76rem;
+  }
+
+  .asset-management-page .desk-grid {
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  }
+
+  .asset-management-page .desk-layout-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .asset-management-page .desk-detail-summary {
+    grid-template-columns: 1fr;
+  }
+}

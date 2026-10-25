@@ -1,0 +1,191 @@
+# Dependencies
+node_modules/
+
+# Environment variables (NEVER commit - contains secrets)
+.env
+.env.*
+
+# WhatsApp Auth/Cache (local)
+.wwebjs_auth/
+.wwebjs_cache/
+.wwebjs_auth_probe/
+server/.wwebjs_auth/
+server/.wwebjs_cache/
+whatsapp-worker/.wwebjs_auth/
+whatsapp-worker/.wwebjs_cache/
+
+# Browser automation artifacts
+.browser-test/
+.browser_libs/
+tools/node/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+client/dist/
+
+# Database backups
+*.sql
+*.sql.gz
+*.zip
+github_share_repo_*/
+ssh_key
+ACCESS_CREDENTIALS.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# Local secret notes
+secrets/
+secrets/*.local.md
+secrets/*.local.txt
+
+# Build artifacts
+.deploy_tmp/
+*.tgz
+
+# Generated reports
+reports/
+exports/reports/
+outputs/
+*.json
+!client-partner/package.json
+!technician-app/package.json
+!technician-app/package-lock.json
+# Expo/EAS build configuration: required for 'expo start', 'eas build' and any
+# fresh clone — app.json holds the project/updates config, eas.json the profiles.
+!technician-app/app.json
+!technician-app/eas.json
+
+# Generated tool directories
+.kilocode/
+
+# PM2 logs
+pm2_logs*.txt
+
+# Test files (ops directory)
+ops/test.php
+.env
+
+# Sensitive runtime files (never commit these)
+cookies.txt
+*.cookies.txt
+audit_logs_*.txt
+audit_logs_dump.txt
+
+# PHP proxy files (use Nginx/Apache config instead)
+proxy_*.php
+
+# Deploy secrets (gitignored — use deploy.env.example as template)
+ops/deploy.env
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# Root deploy secrets
+/deploy.env
+/deploy.env.local
+
+# User uploads (never commit)
+uploads/
+
+# Binary executables
+*.exe
+ops/*.exe
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# Temp/junk files
+=
+*.tmp
+*.txt
+# Credential PII dumps — explicit even though *.txt covers them (belt-and-suspenders)
+user_phone*.txt
+user_phone_login_credentials.txt
+!README.md
+!QUICK_START_GUIDE.md
+!TROUBLESHOOTING.md
+!**/security.txt
+!**/.well-known/security.txt
+
+# Test spreadsheets
+*.xlsx
+
+# One-off scripts (keep deploy_all_full.* only)
+run_*.js
+debug_*.js
+test_*.js
+tmp_*.js
+check_*.js
+clean_*.js
+fix_*.js
+fix*.sql
+rca_*.js
+set_*.js
+reset_*.js
+verify_*.js
+gen_local.js
+investigate_*.js
+scratch_*.js
+check_*.bat
+count_*.bat
+find_*.bat
+list_*.bat
+run_*.ps1
+deploy-phase*.ps1
+verify-phase*.ps1
+run_*.bat
+tunnel.bat
+
+# Internal daily notes (never public - may contain ops details)
+memory/
+!memory/.gitkeep
+
+# Local memory files (untracked — may contain prod IPs/secrets; deploy uses working-tree tarball, not git-track)
+MEMORY.md
+TOOLS.md
+USER.md
+
+# AI agent workspaces (local only - never public)
+.idx/
+.kiro/
+.zcode/
+.zenflow/
+.cursor/
+.claude/
+.ai/
+scratch/
+
+# speednetkhulna.com — track all source, ignore runtime artifacts
+speednetkhulna.com/error_log
+speednetkhulna.com/assets.zip
+
+# Isolated local QA environments and reports
+.qa/
+
+# Reviewed schema-only migration; database dumps remain ignored.
+!server/migrations/20261005_reconciliation_statuses.sql
