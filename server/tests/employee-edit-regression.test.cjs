@@ -181,7 +181,7 @@ test('admin password reset returns a random temporary password when none is conf
     '../utilities/db': { query: async sql => sql.startsWith('SELECT id, full_name')
       ? { rows: [{ id: 8, full_name: 'Target', role: 'Staff', token_version: 1 }] }
       : { rows: [], rowCount: 1 } },
-    bcrypt: { hash: async password => { hashedInput = password; return '$2b$hashed-random'; } },
+    bcrypt: { hash: async pw => { hashedInput = pw; return '$2b$hashed-random'; } },
     '../utilities/permissionRegistry': {
       resolvePermission: (_, permission) => permission === 'users.manage',
       isTruthyPermission: value => value === true || value === 1,
