@@ -5,11 +5,11 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const response = () => ({ locals: {}, code: 200, status(code) { this.code = code; return this; }, json(body) { this.body = body; return this; } });
-const load = (file, mocks) => {
+const load = (file, mocks, env = {}) => {
   const module = { exports: {} };
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', file), 'utf8'), {
     module, require: name => Object.hasOwn(mocks, name) ? mocks[name] : require(name),
-    __dirname: path.dirname(path.join(__dirname, '..', file)), process: { env: {} }, console: { error() {} },
+    __dirname: path.dirname(path.join(__dirname, '..', file)), process: { env }, console: { error() {} },
   });
   return module.exports;
 };
@@ -155,7 +155,7 @@ test('admin password reset hashes the temporary password and forces a change', a
       getEffectivePermissions: async () => ({ isSuperAdmin: false, permissions: {} }),
     },
     '../middleware/auth': { evictAuthCache: id => evicted.push(id) },
-  });
+  }, { DEFAULT_RESET_PASSWORD: '123456' });
   const res = response();
   await controller.resetEmployeePassword({ user: { id: 7 }, params: { id: '8' } }, res);
 
@@ -186,8 +186,7 @@ test('password reset rejects non-admins, self-reset, and delegated resets of all
         isTruthyPermission: value => value === true || value === 1,
         getEffectivePermissions: async () => ({ isSuperAdmin: true, permissions: {} }),
       },
-      '../middleware/auth': { evictAuthCache() {} },
-    });
+    }, { DEFAULT_RESET_PASSWORD: '123456' });
     return { controller, queries };
   };
 
@@ -222,7 +221,7 @@ test('concurrent password reset changes return conflict without success audit', 
       getEffectivePermissions: async () => ({ isSuperAdmin: false, permissions: {} }),
     },
     '../middleware/auth': { evictAuthCache() { assert.fail('must not evict on failed update'); } },
-  });
+  }, { DEFAULT_RESET_PASSWORD: '123456' });
   const res = response();
   await controller.resetEmployeePassword({ user: { id: 7 }, params: { id: '8' } }, res);
   assert.equal(res.code, 409);

@@ -193,7 +193,7 @@ const EditEmployee = () => {
     const handleResetPassword = async () => {
         const result = await Swal.fire({
             title: 'Reset employee password?',
-            text: `This will set ${formData.full_name}'s password to 123456. They will be required to change it after logging in.`,
+            text: `This will reset ${formData.full_name}'s password to a temporary one. They will be required to change it after logging in.`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Reset Password',
