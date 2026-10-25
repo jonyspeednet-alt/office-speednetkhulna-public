@@ -44,7 +44,7 @@
     "sharp": "0.35.5",
     "ssh2": "^1.17.0",
     "whatsapp-web.js": "^1.34.7",
-    "whatwg-url": "^16.0.1",
+    "whatwg-url": "^17.3.0",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "engines": {
