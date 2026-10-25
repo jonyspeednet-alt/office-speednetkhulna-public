@@ -11,7 +11,7 @@
     "body-parser": "^1.20.3",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
+    "dotenv": "^18.0.8",
     "express": "^4.21.2",
     "puppeteer": "^25.14.0",
     "qrcode-terminal": "^0.12.0",
