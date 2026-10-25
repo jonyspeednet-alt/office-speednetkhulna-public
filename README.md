@@ -24,7 +24,7 @@ npm run dev
 ### For Production
 Production deployment is managed outside this repository. No server addresses, credentials or deploy automation are included here.
 
-Required environment variables include `DEFAULT_RESET_PASSWORD` (temporary password issued by the admin password-reset flow; the employee is forced to change it on first login).
+Optional environment variable: `DEFAULT_RESET_PASSWORD` — a fixed temporary password for the admin reset flow. When unset, a random password is generated per reset and shown to the admin once; the employee is always forced to change it on first login.
 
 ---
 

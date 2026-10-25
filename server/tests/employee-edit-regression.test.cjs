@@ -133,9 +133,10 @@ test('new employees must be assigned a recognized office', async () => {
   }
 });
 
-test('admin password reset hashes the temporary password and forces a change', async () => {
+test('admin password reset hashes the configured temporary password and forces a change', async () => {
   const queries = [];
   const evicted = [];
+  let hashedInput = null;
   const controller = load('controllers/employeeController.js', {
     '../utilities/db': { query: async (sql, values) => {
       queries.push({ sql, values });
@@ -145,7 +146,7 @@ test('admin password reset hashes the temporary password and forces a change', a
       return { rows: [], rowCount: 1 };
     } },
     bcrypt: { hash: async (password, rounds) => {
-      assert.equal(password, '123456');
+      hashedInput = password;
       assert.equal(rounds, 10);
       return '$2b$hashed-temporary-password';
     } },
@@ -155,12 +156,14 @@ test('admin password reset hashes the temporary password and forces a change', a
       getEffectivePermissions: async () => ({ isSuperAdmin: false, permissions: {} }),
     },
     '../middleware/auth': { evictAuthCache: id => evicted.push(id) },
-  }, { DEFAULT_RESET_PASSWORD: '123456' });
+  }, { DEFAULT_RESET_PASSWORD: 'Configured#Reset1' });
   const res = response();
   await controller.resetEmployeePassword({ user: { id: 7 }, params: { id: '8' } }, res);
 
   assert.equal(res.code, 200);
   assert.match(res.body.message, /must change it after logging in/);
+  assert.equal(hashedInput, 'Configured#Reset1');
+  assert.equal(res.body.temporaryPassword, undefined);
   assert.equal(res.locals.auditAction, 'ADMIN_PASSWORD_RESET');
   assert.equal(res.locals.auditUserId, 8);
   assert.deepEqual(evicted, [8]);
@@ -170,6 +173,30 @@ test('admin password reset hashes the temporary password and forces a change', a
   assert.ok(update.sql.includes('TRUE'));
   assert.match(update.sql, /token_version = COALESCE\(token_version, 0\) \+ 1/);
   assert.deepEqual([...update.values], ['$2b$hashed-temporary-password', 7, 8, 4]);
+});
+
+test('admin password reset returns a random temporary password when none is configured', async () => {
+  let hashedInput = null;
+  const controller = load('controllers/employeeController.js', {
+    '../utilities/db': { query: async sql => sql.startsWith('SELECT id, full_name')
+      ? { rows: [{ id: 8, full_name: 'Target', role: 'Staff', token_version: 1 }] }
+      : { rows: [], rowCount: 1 } },
+    bcrypt: { hash: async password => { hashedInput = password; return '$2b$hashed-random'; } },
+    '../utilities/permissionRegistry': {
+      resolvePermission: (_, permission) => permission === 'users.manage',
+      isTruthyPermission: value => value === true || value === 1,
+      getEffectivePermissions: async () => ({ isSuperAdmin: false, permissions: {} }),
+    },
+    '../middleware/auth': { evictAuthCache() {} },
+  });
+  const res = response();
+  await controller.resetEmployeePassword({ user: { id: 7 }, params: { id: '8' } }, res);
+
+  assert.equal(res.code, 200);
+  assert.equal(typeof res.body.temporaryPassword, 'string');
+  assert.ok(res.body.temporaryPassword.length >= 12);
+  assert.equal(res.body.temporaryPassword, hashedInput);
+  assert.notEqual(res.body.temporaryPassword, '123456');
 });
 
 test('password reset rejects non-admins, self-reset, and delegated resets of all-access accounts', async () => {
@@ -186,7 +213,8 @@ test('password reset rejects non-admins, self-reset, and delegated resets of all
         isTruthyPermission: value => value === true || value === 1,
         getEffectivePermissions: async () => ({ isSuperAdmin: true, permissions: {} }),
       },
-    }, { DEFAULT_RESET_PASSWORD: '123456' });
+      '../middleware/auth': { evictAuthCache() {} },
+    });
     return { controller, queries };
   };
 
@@ -221,7 +249,7 @@ test('concurrent password reset changes return conflict without success audit', 
       getEffectivePermissions: async () => ({ isSuperAdmin: false, permissions: {} }),
     },
     '../middleware/auth': { evictAuthCache() { assert.fail('must not evict on failed update'); } },
-  }, { DEFAULT_RESET_PASSWORD: '123456' });
+  });
   const res = response();
   await controller.resetEmployeePassword({ user: { id: 7 }, params: { id: '8' } }, res);
   assert.equal(res.code, 409);

@@ -205,7 +205,10 @@ const EditEmployee = () => {
         setResettingPassword(true);
         try {
             const response = await resetEmployeePassword(id);
-            await Swal.fire('Password reset', response.message, 'success');
+            const successText = response?.temporaryPassword
+                ? `${response.message}\n\nTemporary password: ${response.temporaryPassword}\nCopy it now — it will not be shown again.`
+                : response.message;
+            await Swal.fire('Password reset', successText, 'success');
         } catch (error) {
             Swal.fire('Error', error.response?.data?.message || 'Failed to reset employee password.', 'error');
         } finally {
@@ -641,7 +644,7 @@ const EditEmployee = () => {
                                                 </div>
                                             </div>
                                             <div className="alert alert-warning border-0 rounded-4 p-4 mb-4">
-                                                <h6 className="fw-bold mb-2">Reset to default password</h6>
+                                                <h6 className="fw-bold mb-2">Reset password</h6>
                                                 <p className="small mb-3">The employee will be required to change this temporary password after logging in.</p>
                                                 <button
                                                     type="button"

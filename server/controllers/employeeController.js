@@ -11,8 +11,10 @@ const UPLOADS_DIR = path.resolve(__dirname, '../../uploads');
 const BCRYPT_RE = /^\$2[aby]\$/;
 const escapeLike = (s) => String(s).replace(/([%_\\])/g, '\\$1');
 const MIN_PASSWORD_LEN = 8;
-// Reset password must be supplied by the deployment environment; never hardcode a default.
-const DEFAULT_RESET_PASSWORD = process.env.DEFAULT_RESET_PASSWORD || '';
+const crypto = require('crypto');
+// Optional fixed temporary password from the environment. When unset, a random
+// password is generated per reset and returned to the admin exactly once.
+const CONFIGURED_RESET_PASSWORD = process.env.DEFAULT_RESET_PASSWORD || null;
 
 const canManageUsers = (user) => resolvePermission(user, 'users.manage');
 // S1: fail closed — only users with users.edit.any may edit others unless
@@ -687,11 +689,8 @@ const resetEmployeePassword = async (req, res) => {
       }
     }
 
-    if (!DEFAULT_RESET_PASSWORD) {
-      return res.status(500).json({ message: 'Password reset is not configured (DEFAULT_RESET_PASSWORD missing)' });
-    }
-
-    const hashedPassword = await bcrypt.hash(DEFAULT_RESET_PASSWORD, 10);
+    const temporaryPassword = CONFIGURED_RESET_PASSWORD || crypto.randomBytes(9).toString('base64url');
+    const hashedPassword = await bcrypt.hash(temporaryPassword, 10);
     const updated = await pool.query(
       `UPDATE users
        SET password = $1, must_change_password = TRUE,
@@ -707,7 +706,10 @@ const resetEmployeePassword = async (req, res) => {
     require('../middleware/auth').evictAuthCache(targetUserId);
     res.locals.auditAction = 'ADMIN_PASSWORD_RESET';
     res.locals.auditUserId = targetUserId;
-    return res.json({ message: 'Password reset successfully. Employee must change it after logging in.' });
+    return res.json({
+      message: 'Password reset successfully. Employee must change it after logging in.',
+      ...(CONFIGURED_RESET_PASSWORD ? {} : { temporaryPassword }),
+    });
   } catch (error) {
     console.error('resetEmployeePassword Error:', error);
     return res.status(500).json({ message: 'Database Error' });
