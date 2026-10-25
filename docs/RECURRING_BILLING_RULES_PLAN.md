@@ -49,7 +49,7 @@ CREATE INDEX IF NOT EXISTS idx_rbr_lookup ON reseller_billing_rules (reseller_id
 ```
 
 - Soft-delete only (`deleted_at + is_active=FALSE`)। Hard `DELETE` নিষেধ — finalized bill reproducibility ভাঙবে।
-- `dbSetup.js:115-176` (`initBillingAutomationSchema`) pattern এ boot-time `CREATE TABLE/INDEX IF NOT EXISTS` mirror লাগবে, কারণ **কোনো migration runner নাই** — `server/migrations/*.sql` manual `psql`, `server/index.js:72-78` boot এ reseller `initialize()` চলে না, শুধু finalize/generate path এ (`resellerController.js:19,71`)। `ops/deploy_all_full.ps1:978-1012` শুধু code + PM2 reload করে, DDL চালায় না।
+- `dbSetup.js:115-176` (`initBillingAutomationSchema`) pattern এ boot-time `CREATE TABLE/INDEX IF NOT EXISTS` mirror লাগবে, কারণ **কোনো migration runner নাই** — `server/migrations/*.sql` manual `psql`, `server/index.js:72-78` boot এ reseller `initialize()` চলে না, শুধু finalize/generate path এ (`resellerController.js:19,71`)। `the internal deploy script` শুধু code + PM2 reload করে, DDL চালায় না।
 - Audit: `resellerFinancialAudit.js:57-99` via `logResellerFinancialChange` — `BILLING_RULE_CREATE/UPDATE/DEACTIVATE`, `reference_table='reseller_billing_rules'`।
 
 ## 3. Calculation-এ ঢোকানোর নিয়ম

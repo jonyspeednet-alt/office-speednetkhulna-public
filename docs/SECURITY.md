@@ -72,7 +72,7 @@ Single source of truth `server/utilities/permissionRegistry.js:157` `getEffectiv
 
 - **Login** `server/routes/auth.js:16` `express-rate-limit` 5 req / 15min / IP, `X-Forwarded-For` (Apache proxy) aware, `standardHeaders:true`
 - **Public profile** `server/routes/publicRoutes.js:6` 30 req / 60s / IP, in-memory max 5000 + 5min cleanup
-- **cPanel/WAF** doc `ops/SECURITY_HARDENING.md:13` — cPHulk 5/15min + 2FA + Cloudflare CAPTCHA recommend
+- **cPanel/WAF** doc `(internal runbook)` — cPHulk 5/15min + 2FA + Cloudflare CAPTCHA recommend
 
 ---
 
@@ -89,7 +89,7 @@ helmet({
 ```
 Auto adds `Strict-Transport-Security, X-Frame-Options, X-Content-Type-Options` etc.
 
-**Apache/LiteSpeed for static HTML** `ops/office_spa.htaccess:10` `ops/partner_spa.htaccess:10` (Node down hole o header thake):
+**Apache/LiteSpeed for static HTML** `(internal runbook)` `(internal runbook)` (Node down hole o header thake):
 ```
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 X-Frame-Options: SAMEORIGIN
@@ -222,9 +222,9 @@ RewriteCond %{HTTPS} off -> 301 https://
 ## 16. Infrastructure / Proxy
 
 - `app.set('trust proxy','loopback')` `server/index.js:63` — sudhu loopback Apache trust
-- `ops/proxy.php:9` SSRF harden: `path` trim, reject `..`, control chars, sudhu `127.0.0.1:5000/5001`, strip `host/content-length`, multipart boundary `----OfficeProxyBoundary+random_bytes12` + `addcslashes`
-- Fallback curl + `proxy_restart.lock` 30s throttle + `nohup crontab_bootstrap.sh` `ops/proxy.php:124`
-- `.htaccess` `RewriteCond %{HTTPS} off -> 301 https://` + `-Indexes`, `api/(.*) -> proxy.php` age, `index.html` fallback pore `ops/office_spa.htaccess:34`
+- `(internal runbook)` SSRF harden: `path` trim, reject `..`, control chars, sudhu `127.0.0.1:5000/5001`, strip `host/content-length`, multipart boundary `----OfficeProxyBoundary+random_bytes12` + `addcslashes`
+- Fallback curl + `proxy_restart.lock` 30s throttle + `nohup crontab_bootstrap.sh` `(internal runbook)`
+- `.htaccess` `RewriteCond %{HTTPS} off -> 301 https://` + `-Indexes`, `api/(.*) -> proxy.php` age, `index.html` fallback pore `(internal runbook)`
 - PM2 dual `office-api-a:5000 / office-api-b:5001` + cron guard `if(PORT==='5000')` `server/index.js:90`
 - `client/dist/index.html:7` `meta robots noindex,nofollow`, `preconnect` fonts/cdn
 
@@ -233,8 +233,8 @@ RewriteCond %{HTTPS} off -> 301 https://
 ## 17. Build & Deploy
 
 - Vite `sourcemap:false, manualChunks` `client/vite.config.js:28`
-- Deploy `ops/deploy_all_full.ps1` — SCP `client/dist` + `.htaccess` + `proxy.php` + `ecosystem.config.js`, `npm install`, `pm2 reload`, health `curl http://127.0.0.1:8080/api/health/ready` (nginx 127.0.0.1:8080 → dual 5002/5003)
-- Partner alada docroot `partner.speednetkhulna.com` `docs/PARTNER_PORTAL_RUNBOOK.md:44`
+- Deploy: build the client, copy `dist` to the docroot, then reload the process manager. Server layout, ports and topology are managed outside this repository.
+- Partner alada docroot `partner.speednetkhulna.com` `(internal runbook)`
 - `.well-known/security.txt` `client/public/.well-known/security.txt` + `server/index.js:178` fallback chain, `.gitignore` `!**/security.txt`
 
 ---
@@ -244,8 +244,8 @@ RewriteCond %{HTTPS} off -> 301 https://
 | Risk | Before | After | File |
 |------|--------|-------|------|
 | Brute-force login unlimited | `loginRateLimiter = (req,res,next)=>next()` | 5/15min `express-rate-limit` + `600` + `cPHulk` doc | `server/routes/auth.js:16` |
-| Static No CSP/HSTS/X-Frame | Header absent on `/` | htaccess + helmet full set | `ops/office_spa.htaccess:10` |
-| Token in localStorage + FTP open | `localStorage token + Bearer` + port 21/2083 open | httpOnly Strict + Bearer remove + FTP doc `ops/SECURITY_HARDENING.md` | `authController.js:138`, `axiosConfig.js:37` |
+| Static No CSP/HSTS/X-Frame | Header absent on `/` | htaccess + helmet full set | `(internal runbook)` |
+| Token in localStorage + FTP open | `localStorage token + Bearer` + port 21/2083 open | httpOnly Strict + Bearer remove + FTP doc `(internal runbook)` | `authController.js:138`, `axiosConfig.js:37` |
 
 ---
 

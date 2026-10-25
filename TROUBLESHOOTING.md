@@ -85,10 +85,10 @@ The 503 error occurs when the database SSH tunnel is not running. The applicatio
 
 Check these log files for detailed error information:
 
-- **Backend Errors:** `ops/logs/backend-local.err.log`
-- **Backend Output:** `ops/logs/backend-local.log`
-- **Database Tunnel:** `ops/logs/local-db-tunnel.log`
-- **Tunnel Errors:** `ops/logs/local-db-tunnel.log.err`
+- **Backend Errors:** `logs/backend-local.err.log`
+- **Backend Output:** `logs/backend-local.log`
+- **Database Tunnel:** `logs/local-db-tunnel.log`
+- **Tunnel Errors:** `logs/local-db-tunnel.log.err`
 
 ### Common Issues
 
@@ -129,7 +129,7 @@ Verify SSH port ${SSH_PORT} is open and credentials are correct.
 
 If issues persist after following this guide, check:
 1. Network connectivity to [REDACTED]
-2. SSH credentials in `ops/start_db_tunnel.ps1`
+2. SSH credentials in the local tunnel script (kept outside this repository)
 3. PostgreSQL service status on remote server
 4. PM2 process status: `pm2 list`
 
