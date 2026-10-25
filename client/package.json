@@ -30,7 +30,7 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.6.1",
     "react-qr-code": "^2.2.0",
-    "react-router-dom": "^6.18.0",
+    "react-router-dom": "^7.18.4",
     "sortablejs": "^1.15.6",
     "sweetalert2": "^11.26.25",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
