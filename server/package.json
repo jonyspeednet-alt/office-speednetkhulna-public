@@ -36,7 +36,7 @@
     "jsonwebtoken": "^9.0.0",
     "multer": "^2.0.2",
     "node-cron": "^4.6.0",
-    "nodemailer": "10.1.1",
+    "nodemailer": "10.1.4",
     "pdfkit": "^0.20.2",
     "pg": "^8.23.1",
     "puppeteer": "25.14.0",
